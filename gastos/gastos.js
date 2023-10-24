@@ -74,7 +74,7 @@ function showAlert() {
 
    function closeAlert() {
     if(document.getElementById('alerta').value==''){
-      document.getElementById('validacion').textContent='escriba algo malparaido'
+      document.getElementById('validacion').textContent='escriba algo'
     }
    else{
        document.getElementById('alert').style.display = 'none';
