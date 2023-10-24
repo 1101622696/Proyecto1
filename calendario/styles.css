@@ -1,0 +1,135 @@
+*{
+    margin:0%;
+}
+body{
+    background-color: gray;
+}
+
+.calendario{
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2%;
+padding: 1%;
+height: 800px;
+}
+
+.contenedor{
+    /* border: 1px solid red; */
+    display:grid;
+    width:100%;
+    height:auto;
+    grid-template-rows: 45% 50%;
+    background-color: rgb(255, 253, 253);
+    border-radius: 10px;
+    position: relative;
+
+}
+.encabezado{
+    background-color: rgb(236, 102, 102);
+    color:white;
+    font-size:x-large;
+    display: flex;
+    flex-direction: column;
+    font-family:sans-serif;
+    border-radius: 10px;
+
+}
+h1{
+    margin-left: 6%;
+}
+th{
+    color: rgb(206, 44, 44);
+
+}
+.mes{
+text-align: center;
+margin-top: 6%;
+
+}
+th, td{
+font-size:15px;
+line-height: 1px;
+
+}
+.a{
+    font-weight:900;
+}
+.b{
+    font-weight:lighter;
+    color:gray
+}
+img{
+    width:100%;
+    height:10%;
+    left:0%;
+    top:42%;
+    position: absolute;
+
+}
+@media (max-width:1200px) {
+    .encabezado{
+        font-size: larger;
+    }
+}
+@media (max-width:1000px) {
+    .encabezado{
+        font-size: medium;
+    }
+    img{
+        height:8%
+    }
+}
+
+@media (max-width:900px) {
+.calendario{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+.contenedor{
+display:grid;
+width:100%;
+height:auto;
+grid-template-rows: 45% 53%;
+background-color: rgb(255, 253, 253);
+}
+
+img{
+    top:40%
+}
+}
+@media (max-width:700px) {
+    .calendario{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        height: 1400px;
+        
+    }
+    .contenedor{
+    display:grid;
+    width:100%;
+    height:auto;
+    grid-template-rows: 45% 53%;
+    background-color: rgb(255, 253, 253);
+    }
+    img{
+        top:40%
+    }
+    }
+    @media (max-width:440px) {
+        .calendario{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            width:70%;
+            height: 3000px;
+            gap:1%;
+            margin-left: 15%;
+        }
+        .contenedor{
+        display:grid;
+        width:100%;
+        height:auto;
+        grid-template-rows: 45% 53%;
+        background-color: rgb(255, 253, 253);
+}
+        }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gastos</title>  <link rel="stylesheet" href="./gastos.css">
+  <script src="gastos.js"></script>  
+</head>
+<body>
+
+  <div class="alert-container" id="alert">
+       
+    <div class="alert-header">¡Alerta importante!</div>
+    <h5 id="validacion"></h5>
+    <input type="text" id="alerta" placeholder="digite su presupuesto inicial"/>
+    <div id="alert-content"></div>
+    <div class="alert-buttons">
+        <button class="alert-button" onclick="closeAlert()">Aceptar</button>
+       
+    </div>
+</div>
+
+<div class="alert-container" id="alertt">
+       
+  <div class="alert-header">¡Alerta importante!</div>
+  <div id="alert-content"></div>
+  <div class="alert-buttons">
+      <button class="alert-button" onclick="cerraralerta()">Aceptar</button>
+     
+  </div>
+</div>
+
+
+  <div class="gastos">
+    <h3 class="titulo">Gasto Semanal</h3>
+    <div class="contenedor">
+      <div class="add">
+        <p class="here">Añade tus gastos aquí</p>
+        <label for="nombre" id="addgastos">Gastos:</label>
+        <input type="text" id="preciogastos" name="nomgastos" placeholder="Nombre Gasto"/>
+        <label for="apellido" id="addcantidad">Cantidad:</label>
+        <input type="tel" id="cantidad" name="cantidad" placeholder="Cantidad en $"/>
+
+        <button type="button" id="agregar" class="boton" onclick="agregar()"> Agregar</button> 
+      </div>
+      <div class="part2">
+        <p class="here">Listado</p>
+
+        <!-- <table >
+          <thead>
+              <tr>
+                  <th></th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody id="tabla">
+    
+          </tbody>
+        </table> -->
+
+        <div class="presupuesto">Presupuesto: $
+        <h5 id="escrito"></h5>
+      </div>
+        <div class="restante">Restante: $
+        </div>
+      </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

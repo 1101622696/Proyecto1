@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>formulario</title>
+  <link rel="stylesheet" href="./styles.css">
+<script src="formulario.js"></script>  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+  <h3 id="alert"></h3>
+<div class="formulario">
+  <div class="titulo">
+    <h1>Formulario de registro</h1>
+  </div>
+    <div class="inicio">
+      <label for="nombre" id="nombretitulo">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Escriba su nombre"/>
+      <label for="apellido">Apellidos:</label>
+      <input type="text" id="apellido" name="apellido" placeholder="Escriba su apellido"/>
+    </div>
+    <div class="sexo">
+      <label for="sexo">Sexo:</label>
+      <input type="radio" id="hombre" name="genero" value="hombre"/>
+      <label for="sexo">Hombre</label>
+      <input type="radio" id="mujer" name="genero" value="mujer"/>
+      <label for="sexo">Mujer</label>
+    </div>
+<div class="cyfecha">
+      <label for="sexo">Correo:</label>
+      <input type="email" id="correo" name="correo" placeholder="Escriba su email"/>
+
+      <label for="fecha" id="fechanac">Fecha de nacimiento:</label>
+      <input type="date" id="fecha" name="date"/>
+    </div>
+ 
+    <div class="documento">
+      <label for="opciones">Tipo de documento</label>
+      <select id="opciones" name="opciones" required>
+        <option disabled selected="">selecciona un tipo de documento</option>
+          <option value="ti">Tarjeta de identidad</option>
+          <option value="Cedula">Cédula</option>
+          <option value="extranjera">Extranjera</option>
+      </select>
+    
+      <label for="doc">Numero de Documento:</label>
+      <input type="tel" id="ndoc"placeholder="escriba su numero de documento">
+
+      <label for="doc">Numero de telefono:</label>
+      <input type="tel" id="numtel"placeholder="escriba su numero de telefono">
+    </div>
+
+      <button type="button" id="enviar" class="boton" onclick="validar()"> Enviar</button> 
+    </div>
+
+    <h2 class="titulotabla">Registros</h2>
+    <table >
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Correo</th>
+              <th>Género</th>
+              <th>Tipo Documento</th>
+              <th>N° Documento</th>
+              <th>Fecha de nacimiento</th>
+              <th>Numero de telefono</th>
+          </tr>
+      </thead>
+      <tbody id="tabla">
+
+      </tbody>
+    </table>
+</body>
+</html>

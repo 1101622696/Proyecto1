@@ -1,0 +1,146 @@
+*{
+  margin:0
+}
+body{
+  background-color: rgb(115, 113, 207);
+}
+
+.header{
+text-align: center;
+margin-top: 2%;
+border-radius: 20px;
+    box-shadow: 2px 20px 30px rgb(65, 78, 82);
+    width:40%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform .2s;
+    display:grid;
+    color:white;
+    /* transition-delay: 1s, 250ms; */
+    background: linear-gradient(rgb(50, 88, 158), rgb(196, 228, 79));
+
+  }
+  .header:hover{
+transform:scale(1.1)
+  }
+
+.titulo{
+  font-size:250%;
+letter-spacing: 10px;
+font-family: 'Anton', sans-serif;
+/* font-family: 'Bebas Neue', sans-serif; */
+/* font-family: 'Libre Franklin', sans-serif; */
+/* font-family: 'Playfair Display', serif; */
+/* font-family: 'Raleway', sans-serif; */
+}
+.nombre{
+  font-weight: bolder;
+  font-size:150%;
+font-family: 'Playfair Display', serif;
+letter-spacing: 3px;
+
+}
+.year{
+  font-family: 'Bebas Neue', sans-serif;
+  font-size:25px;
+  color:rgb(248, 242, 242);
+  letter-spacing: 4px;
+
+}
+
+.pagina{
+  background: white url('46.png')center no-repeat;
+  /* background-color: lightcyan; */
+  width:70%;
+  height: 650px;
+  /* border: 1px solid black; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:4%;
+  box-shadow: 2px 5px 30px;
+}
+.contenedor{
+  margin-top:5%;
+  width:50%;
+  height: 70%;
+  /* border: 1px solid black; */
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform .2s;
+  box-shadow: 2px 5px 30px rgb(111, 111, 207);
+
+}
+.contenedor:hover{
+transform: scale(1.2);
+}
+a{
+  font-size: large;
+}
+a:link{
+  color:rgb(188, 138, 236)
+}
+
+a:visited{
+  color:rgb(27, 120, 100)
+}
+a:hover{
+  color: rgb(238, 238, 124)
+}
+a:active{
+  color:red
+}
+img{
+  width:50%;
+margin-top: 5%;
+}
+
+@media (max-width:1100px) {
+.contenedor{
+  width: 50%;
+  height: 60%;
+}
+}
+@media (max-width:1000px) {
+  .pagina{
+    background: white;
+    width: 80%;
+    height: 1500px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }  
+  .contenedor{
+    width: 60%;
+    height: 90%;
+  }
+  
+.nombre{
+  font-size: 40px;
+}
+.proyecto{
+  font-size: larger;
+
+}
+}
+@media (max-width:640px) {
+.header{
+  width: 100%;
+  margin-top: 5%;
+  line-height: 70px;
+}
+.pagina{
+  width: 100%;
+  margin-top: 10%;
+
+}
+.contenedor{
+  width: 70%;
+  height: 90%;
+}
+.proyecto{
+  font-size: 30px;
+}
+}

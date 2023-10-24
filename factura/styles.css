@@ -1,0 +1,663 @@
+*{
+  margin-top:0;
+  margin-bottom:0;
+}
+
+.factura{
+  width:61%;
+  height: 1400px;
+  margin-left: 20%;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+
+}
+.blateral{
+  width:7%;
+  height: 0px;
+    /* background-image: url('barrita.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+  
+}
+
+.intro{
+  display: flex;
+width:1280%;
+margin-left: 120%;
+}
+.fondo{
+  margin-left:10%;
+}
+.arriba{
+  margin-left:10%;
+  margin-top:14%;
+  display: grid;
+  height:auto;
+  width:440%;
+  height: 30%;
+}
+.arriba1{
+  display: flex;
+  width:60%;
+  margin-top: 1%;
+  gap:3%;
+  margin-left: 35%;
+  }
+.arriba2{
+display: flex;
+flex-direction: column;
+text-align:right;
+color:rgb(43, 187, 175);
+  font-family:'Times New Roman', Times, serif;
+  font-size: 15px;
+  align-items: right;
+}
+.arriba3{
+  display:grid;
+  font-family:'Trebuchet MS', sans-serif;
+}
+.titulo{
+  font-size: 63px;
+ font-family: 'Anton', sans-serif;
+  letter-spacing: 14px;
+  color:rgb(43, 187, 175);
+  width:75%;
+  text-align: right;
+  margin-left: 25%;
+}
+.partedos{
+  display: flex;
+  width: 1180%;
+  margin-top:150%;
+  margin-left:160%;
+}
+
+.metodo{
+  margin-left:15%;
+  width:60%;
+  margin-top: 5%;
+}
+.cyc{
+  display: grid;
+  grid-template-columns: 25% 70%;
+  width: 80%;
+   margin-left: 15%;
+   margin-top: 1%;
+}
+.lacuenta{
+  display:flex;
+  flex-direction: column;
+text-align: right;
+gap:2px;
+width:130%
+}
+.elcorreo{
+  display:flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  width:120%;
+  margin-left:15%;
+  font-size: 17px;
+
+}
+.textoropa{
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 18px;
+  line-height: 25px;
+  display: grid;
+  width:120%
+}
+.nombre{
+  color:rgb(43, 187, 175);
+  font-size: 30px;
+}
+.pago{
+  margin-left:33%;
+  letter-spacing: 4px;
+  color:rgb(43, 187, 175);
+font-size: 16px;
+margin-top: 3%;
+}
+.tabla{
+  width: 1180%;
+  margin-top:120%;
+  margin-left:160%;
+  /* border: 1px solid black; */
+}
+table{
+  width:100%;
+  border-collapse:collapse ;
+  border-bottom: 3px solid #dad7d7;
+}
+th, td{
+  padding: 15px;
+  text-align: center;
+}
+th{
+  background-color:rgb(43, 187, 175);
+  color:white;
+  text-align: center;
+
+}
+tr:nth-child(odd){
+  background-color: #dad7d7;
+}
+/* tr :hover{
+  background-color:#bdbaba ;
+  cursor:pointer
+} */
+
+.diseño{
+  text-align: left;
+  /* border: 1px solid black; */
+
+}
+.sub-total{
+  margin-left: 60%;
+  margin-top: 1%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 40%;
+  height: 100%;
+  font-size: 18px;
+ }
+ .col1{
+width:70%;
+text-align: right;
+line-height: 27px;
+ }
+ .col2{
+  margin-left:20%;
+  line-height: 27px;
+}
+.final{
+  width: 550%;
+  margin-left: 170%;
+  margin-top: 190%;
+  font-size: 17px;
+  line-height: 23px;
+}
+.gracias{
+  width: 420%;
+  margin-left: 900%;
+  margin-top: -150%;
+  color:rgb(43, 187, 175);
+  font-size: 30px;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 7px;
+
+}
+hr{
+ background-color:rgb(43, 187, 175);
+ color:rgb(43, 187, 175);
+  width:1080%;
+  height: 2px;
+  margin-left: 190%;
+  margin-top: 60%;
+}
+.ppagina{
+  width: 750%;
+  margin-top: 30%;
+margin-left: 350%;
+letter-spacing: 1px;
+font-size: 15px;
+}
+@media (max-width:375px){
+.factura{
+  width: 100%;
+  margin-left:0%
+}
+}
+@media (max-width:400px) {
+  .factura{
+    width: 100%;
+    margin-left:0%;
+    height: 1200px;
+  }
+ 
+.arriba{
+width:120%;
+height: auto;
+margin-left: 1%;
+
+}
+.arriba1{
+  width:100%;
+  display: flex;
+  justify-content: center;
+align-items: center;
+margin-left: 0%;
+}
+.arriba2{
+  font-size: 12px;
+}
+.arriba3{
+  font-size: 11px;
+  width: 130%;
+  height:100%;
+  text-align: left;
+}
+.titulo{
+font-size: 25px;
+text-align: center;
+margin-left:10%;
+letter-spacing: 3px;
+}
+.intro{
+  width:900%;
+  display: grid;
+  text-align: center;
+}
+.partedos{
+  display:grid;
+}
+.textoropa{
+font-size: 15px;
+}
+.metodo{
+  width:100%;
+  margin-left: 1%;
+}
+.cyc{
+display:grid;
+grid-template-columns: 25% 70%;
+gap:1%;
+font-size: 10px;
+width:100%;
+margin-left: 1%;
+}
+.lacuenta{
+padding: 3%;
+}
+.elcorreo{
+font-size: 11px;
+width:90%;
+height: auto;
+margin-top: 1%;
+}
+th, td{
+padding:7px
+}
+tr{
+  font-size:10px
+}
+th{
+  font-size: 9px;
+}
+.sub-total{
+width:50%;
+margin-left:50%;
+display:grid;
+grid-template-columns: 60% 40%;
+}
+.col1{
+  font-size: 10px;
+  line-height: 15px;
+  width:90%;
+}
+.col2{
+  margin-left:0%;
+  font-size: 10px;
+  line-height: 15px;
+}
+.final{
+  width:1000%;
+  margin-left:250%;
+}
+.gracias{
+  margin-top: 30%;
+  width:1000%;
+  margin-left:10%;
+  font-size:20px
+}
+.ppagina{
+  width:1000%;
+  font-size: 9px;
+  margin-left: 240%;
+}
+
+}
+
+@media (max-width:500px) {
+  th, td{
+    padding:3px
+    }
+    tr{
+      font-size:10px
+    }
+    th{
+      font-size: 9px;
+    }
+  .tabla{
+  width: 1200%;
+}
+.factura{
+height: 1500px;
+}
+
+}
+@media (max-width:645px) {
+  .arriba{
+    width:90%;
+  }
+     .arriba1{
+      width:100%;
+      display: flex;
+      justify-content: center;
+    align-items: center;
+    margin-left: 0%;
+    }
+    .arriba2{
+      font-size: 10px;
+      width:50%;
+    }
+    .arriba3{
+      font-size: 10px;
+      width: 140%;
+      text-align: left;
+    }
+    .titulo{
+    font-size: 40px;
+    text-align: center;
+    margin-left:10%;
+    letter-spacing: 6px;
+    }
+    .intro{
+      width:900%;
+      display: grid;
+      margin-left:230%
+    }
+    .partedos{
+      display:grid;
+    }
+    .textoropa{
+    font-size: 15px;
+    }
+    .metodo{
+      width:100%;
+      margin-left: 1%;
+    
+    }
+    .textoropa{
+  font-size: 18px;
+  width: 90%;
+    }
+    .cyc{
+    display:grid;
+    grid-template-columns: 20% 70%;
+    gap:1%;
+    font-size: 10px;
+    width:100%;
+    margin-left: 1%;
+    }
+    .lacuenta{
+    padding: 8%;
+    font-size: 13px;
+    }
+    .elcorreo{
+    font-size: 16px;
+    width:90%;
+    height: auto;
+    margin-top: 1%;
+    }
+    th, td{
+      padding: 10px;
+    }
+    tr{
+      font-size:15px
+    }
+    th{
+      font-size: 11x;
+    }
+    .sub-total{
+    width:50%;
+    margin-left:50%;
+    display:grid;
+    grid-template-columns: 60% 40%;
+    }
+    .tabla{
+      margin-left:7%
+    }
+    .col1{
+      font-size: 15px;
+      line-height: 19px;
+      width:90%;
+    }
+    .col2{
+      margin-left:0%;
+      font-size: 15px;
+      line-height: 19px;
+    }
+    .gracias{
+      margin-top: 3%;
+      margin-left:700%;
+      font-size:20px;
+    }
+  .blateral{
+    height: 10%
+  }
+}
+  @media (max-width:1800px) {
+    .arriba{
+      width:280px;
+      margin-left:15%;
+    
+    }
+    .arriba1{
+     margin-left:1%;
+     width:100%
+    }
+    .titulo{
+      margin-left:5%;
+    }
+    .tabla{
+      margin-left: 40%;
+    }
+  }
+
+@media (max-width:1600px) {
+  .arriba{
+    width:280px;
+    margin-left:15%;
+  
+  }
+  .arriba1{
+   margin-left:1%;
+   width:100%
+  }
+  .titulo{
+    margin-left:5%;
+  }
+
+  .tabla{
+    margin-left:15%;
+    }
+    .barral{
+      height: 1250px;
+    }
+    .factura{
+      height: 1250px;
+    }
+}
+@media (max-width:1160px) {
+  .arriba{
+    width:280px;
+    margin-left:5%;
+  
+  }
+  .arriba1{
+   margin-left:1%;
+   width:100%
+  }
+  .titulo{
+    margin-left:10%;
+  }
+}
+@media (max-width:900px) {
+  .titulo{
+    font-size: 30px;
+  margin-left: 10%;
+  letter-spacing: 9px;
+      }
+.arriba1{
+width:70%;
+margin-left: 10%;
+
+}
+.metodo{
+width:90%;
+}
+.pago{
+width:90%;
+margin-left: 4%;
+}
+.cyc{
+margin-left:1%;
+width:90%;
+}
+.elcorreo{
+  font-size: 16px;
+}
+.gracias{
+  font-size:20px;
+  width:500%
+}
+.blateral{
+  height:1200px
+}
+.ppagina{
+width:1100%;
+margin-left:200%
+}
+    }
+   @media (max-width:2560px) {
+.final{
+margin-bottom:40%;
+}
+
+  }   @media (max-width:2715px) {
+
+.final{
+margin-bottom:40%;
+}
+  }
+  @media (max-width:1100px) {
+    .gracias{
+      margin-left:800%;
+      width:400%;
+      font-size:20px;
+      letter-spacing: 4px;
+    }
+    .arriba{
+      width:280px;
+      margin-left:5%;
+    
+    }
+    .arriba1{
+     margin-left:1%;
+     width:100%
+    }
+    .titulo{
+      margin-left:10%;
+      font-size: 40px;
+    }
+    .metodo{
+      margin-left:2%
+    }
+  }
+  @media (max-width:1000px) {
+  .gracias{
+    margin-left:800%;
+    width:400%;
+    font-size:20px;
+    letter-spacing: 4px;
+  }
+  .barral{
+    height:1200px
+  }
+  .factura{
+    height: 1200px;
+  }
+
+  .tabla{
+    margin-left: 60%;
+  }
+.arriba{
+  width:280px;
+  margin-left:1%;
+
+}
+.arriba1{
+ margin-left:1%;
+ width:100%
+}
+.titulo{
+  margin-left:10%;
+  font-size: 40px;
+}
+.pago{
+    width: 90%;
+    margin-left:1%;
+}
+.cyc{
+  margin-left: 1%;
+}
+.elcorreo{
+  font-size:15px;
+  margin-left:20%
+}
+.lacuenta{
+  font-size:15px;
+text-align:right;
+/* border:1px solid black; */
+width:150%
+}
+  }
+
+  @media (max-width:815px) {
+    .factura{
+      height: 1250px;
+    }
+    .barral{
+      height: 1250px;
+    }
+    .arriba3{
+      font-size: 14px;
+    }
+      }
+      @media (max-width:750px) {
+        .intro{
+          display: grid;
+        }
+        
+        .partedos{
+          display: grid;
+        }
+        
+        .arriba{
+          width:280px;
+          margin-left:5%;
+        
+        }
+        .arriba1{
+         margin-left:1%;
+         width:100%
+        }
+        .titulo{
+          margin-left:10%;
+        }
+        .factura{
+          height: 1450px;
+        }
+        .barral{
+          height: 1450px;
+        }
+      }
+      @media (max-width:600px){
+        .factura{
+          width:100%;
+          margin-left: 0;
+        }
+      }
