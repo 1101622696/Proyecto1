@@ -19,8 +19,21 @@ border-radius: 20px;
     color:white;
     /* transition-delay: 1s, 250ms; */
     background: linear-gradient(rgb(50, 88, 158), rgb(196, 228, 79));
-
+      overflow: hidden;
+    position: sticky;
+    top:0px;
+    animation: adjust-header linear both;
+    animation-timeline: scroll();
+    animation-range: 0 200px;
   }
+@keyframes adjust-header{
+  to {
+    background: rgba(0, 0, 0, .3);
+    backdrop-filter: blur(5px);
+    font-size: 12px;
+    height: 100px;
+  }
+}
   .header:hover{
 transform:scale(1.1)
   }
