@@ -31,7 +31,7 @@ function agregar() {
     setTimeout(() => {
         document.getElementById("alertt").textContent = ""
     }, 3000);
-  } else if (document.getElementById("cantidad").value.length<3) {
+  } else if (document.getElementById("cantidad").value.length<=2) {
     document.getElementById("alertt").textContent = "Por favor escriba la cantidad en numeros"
     setTimeout(() => {
         document.getElementById("alertt").textContent = ""
@@ -61,6 +61,9 @@ function pintar(){
   td2.textContent=item.cantidad
   td3.appendChild(eliminar)
   tr.appendChild(td1)
+  tr.appendChild(td2)
+  tr.appendChild(td3)
+  frag.appendChild(tr)
     document.getElementById("tabla").appendChild(frag)
   })
 }
