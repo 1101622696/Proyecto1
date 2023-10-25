@@ -49,15 +49,18 @@ function pintar(){
   let frag= document.createDocumentFragment()
   gastossem.forEach((item, index) => {
     let tr = document.createElement("tr")
-    let td1 = document.createElement("td")
+    let td1 = document.createElement("td")    
+    let td2 = document.createElement("td")
+    let td3 = document.createElement("td")
     let eliminar = document.createElement("button")
     eliminar.textContent="❌"
     eliminar.addEventListener("click",()=>{
     borrar(index)
   })
   td1.textContent=item.preciogastos
-    td2.textContent=item.cantidad
-    td9.appendChild(eliminar)
+  td2.textContent=item.cantidad
+  td3.appendChild(eliminar)
+  tr.appendChild(td1)
     document.getElementById("tabla").appendChild(frag)
   })
 }
@@ -74,11 +77,12 @@ function showAlert() {
 
    function closeAlert() {
     if(document.getElementById('alerta').value==''){
-      document.getElementById('validacion').textContent='escriba algo'
+      document.getElementById('validacion').textContent='escriba algo '
     }
    else{
        document.getElementById('alert').style.display = 'none';
        document.getElementById("escrito").textContent=parseInt(document.getElementById("alerta").value)
+       document.getElementById("resta").textContent=parseInt(document.getElementById("alerta").value)
    }
    }
 
