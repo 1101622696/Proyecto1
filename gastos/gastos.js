@@ -1,95 +1,151 @@
+
+
+let controlnumerico = /^[0-9]+$/;
+let presupuesto = 0
+let saldo = 0
+
+
+
+function showAlert() {
+  document.getElementById('alert').style.display = 'block';
+}
+function showAlertt() {
+  document.getElementById('alertt').style.display = 'block';
+}
+
+function closeAlert() {
+
+if (controlnumerico.test(document.getElementById('alerta').value)) {
+ document.getElementById('alert').style.display = 'none';
+ presupuesto = parseInt(document.getElementById("alerta").value);
+ saldo = parseInt(document.getElementById("alerta").value);
+ document.getElementById('escrito').textContent = presupuesto.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+ document.getElementById('resta').textContent = saldo.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+
+}
+else {
+ document.getElementById('validacion').textContent = "digite una cantidad para continuar"
+}
+}
+
+
+function cerraralerta() {
+document.getElementById('alertt').style.display = 'none';
+}
+
+
+
+
 const gastossem = [];
 
 let op = null
 let indice=null
 
-function formulario() {
+function formulario(precio_gasto) {
 
-  let preciogastos=document.getElementById("preciogastos").value;
-  let cantidad=document.getElementById("cantidad").value;
 
-  if (op===true){
-    gastossem[indice].preciogastos=document.getElementById("preciogastos").value
-    gastossem[indice].cantidad=document.getElementById("cantidad").value
-  }else{
     let usuario = {
-      preciogastos: preciogastos,
-      cantidad: cantidad,
+      preciogastos: document.getElementById("preciogastos").value,
+      cantidad: precio_gasto,
     }
     
     gastossem.push(usuario)
-        }
+        
     document.getElementById("preciogastos").value = " ";
     document.getElementById("cantidad").value = " ";
 
     console.log(gastossem);
+  }
 
-}
 function agregar() {
   if (document.getElementById("preciogastos").value == "") {
-    document.getElementById("alertt").textContent = "Por favor el producto en gastos esta vacio"
-    setTimeout(() => {
-        document.getElementById("alertt").textContent = ""
-    }, 3000);
-  } else if (document.getElementById("cantidad").value.length<=2) {
-    document.getElementById("alertt").textContent = "Por favor escriba la cantidad en numeros"
-    setTimeout(() => {
-        document.getElementById("alertt").textContent = ""
-    }, 3000);
-  }else {
-      formulario();
+    document.getElementById("alert-content").textContent = "Por favor el producto en gastos esta vacio"
+    showAlertt()
+
+  } else if (controlnumerico.test(document.getElementById("cantidad").value)) {
+    let precio_gasto = parseInt(document.getElementById("cantidad").value)
+
+
+    if (saldo > 0) {
+        if (saldo>=precio_gasto){
+        formulario(precio_gasto)
+        
 
      document.getElementById("tabla").innerHTML=""
 pintar()
+saldo = saldo - precio_gasto
+            document.getElementById('resta').textContent = saldo.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+            document.getElementById("correcto").style.display = "flex"
+            setTimeout(() => {
+                document.getElementById("correcto").style.display = "none"
+            }, 3000);
+        }
+        else{ document.getElementById("alert-content").textContent = "saldo insuficiente para ese gasto"
+        showAlert()
 
-  }
+        }
+            if (saldo < 1) {
+                document.getElementById("preinsu").style.display = "flex"
+
+                const boton = document.getElementById('boton');
+
+                boton.addEventListener('mouseover', function() {
+                  boton.style.backgroundColor = 'rgb(49, 49, 49)';
+                });
+            }
+        }
+        else {
+            document.getElementById("boton").disable = true
+           
+        }
+        if (saldo <= 20000) {
+            document.getElementById("conr").style.backgroundColor = "red"
+        }
+
+    }
+    else {
+        document.getElementById("alert-content").textContent = "Por favor digite una cantidad"
+        showAlertt()
+    }
+
 }
+console.log(gastossem)
+
 
 function pintar(){
+
   let frag= document.createDocumentFragment()
   gastossem.forEach((item, index) => {
     let tr = document.createElement("tr")
+
     let td1 = document.createElement("td")    
     let td2 = document.createElement("td")
     let td3 = document.createElement("td")
     let eliminar = document.createElement("button")
     eliminar.textContent="❌"
-    eliminar.addEventListener("click",()=>{
+        eliminar.addEventListener("click",()=>{
     borrar(index)
   })
   td1.textContent=item.preciogastos
-  td2.textContent=item.cantidad
+  td2.textContent=item.cantidad.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+  td2.classList.add("valor_gasto");
   td3.appendChild(eliminar)
   tr.appendChild(td1)
   tr.appendChild(td2)
   tr.appendChild(td3)
+
   frag.appendChild(tr)
     document.getElementById("tabla").appendChild(frag)
   })
 }
-function borrar(i){
+function borrar(i, x){
   index=i
   gastossem.splice(index, 1);
   document.getElementById("tabla").innerHTML=""
 pintar()
-}
-
-function showAlert() {
-       document.getElementById('alert').style.display = 'block';
-   }
-
-   function closeAlert() {
-    if(document.getElementById('alerta').value==''){
-      document.getElementById('validacion').textContent='escriba algo '
-    }
-   else{
-       document.getElementById('alert').style.display = 'none';
-       document.getElementById("escrito").textContent=parseInt(document.getElementById("alerta").value)
-       document.getElementById("resta").textContent=parseInt(document.getElementById("alerta").value)
-   }
-   }
-
-
-function cerraralerta() {
-    document.getElementById('alertt').style.display = 'none';
+saldo = saldo + x.cantidad
+document.getElementById('resta').textContent = saldo.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+document.getElementById("preinsu").style.display = "none"
+document.getElementById("conr").style.backgroundColor = "rgb(223, 170, 224)"
+console.log(gastossem)
 }
