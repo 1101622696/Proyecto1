@@ -62,7 +62,7 @@
     height: 60%;
     background-color:lightblue;
   }
-  #boton:hover{
+#boton:hover{
     background-color: rgb(38, 138, 151);
     cursor: pointer;
     }
@@ -113,11 +113,11 @@
     transform: translate(-50%, -50%);
     background-color: #000000;
     padding: 20px;
-    border: 2px solid greenyellow;
+    border: 2px solid rgb(120, 16, 189);
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     width: 400px;
-    color: greenyellow;
+    color: rgb(112, 77, 136);
    
   }
   
@@ -138,7 +138,7 @@
   
   .alert-button {
     padding: 10px 20px;
-    background-color: greenyellow;
+    background-color: rgb(85, 35, 105);
     font-weight: 800;
     border: none;
     border-radius: 5px;
@@ -156,3 +156,4 @@
     border-radius: 3vmax;
     color: white;
   }
+
