@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gastos</title>  <link rel="stylesheet" href="./gastos.css">
-  <script src="gastos.js"></script>  
+  <title>Gastos</title>
+  <link rel="stylesheet" href="./gastos.css">
+  <script src="gastos.js"></script>
 </head>
+
 <body>
 
   <div class="alert-container" id="alert">
-       
+
     <div class="alert-header">¡Su Presupuesto!</div>
     <h5 id="validacion"></h5>
-    <input type="text" id="alerta" placeholder="digite su presupuesto inicial"/>
-    <div id="alert-content"></div>
+    <input type="text" id="alerta" placeholder="Digite su presupuesto inicial" />
+    <div id="alert-content1"></div>
     <div class="alert-buttons">
-        <button class="alert-button" onclick="closeAlert()">Aceptar</button>
-       
-    </div>
-</div>
+      <button class="alert-button" onclick="closeAlert()">Aceptar</button>
 
-<!-- <h3 id="alertt"></h3> -->
-<div class="alert-container" id="alertt">
-  <div class="alert-header">¡Alerta importante!</div>
-  <div id="alert-content"></div>
-  <div class="alert-buttons">
-      <button class="alert-button" onclick="cerraralerta()">Aceptar</button>
-     
+    </div>
   </div>
-</div>
+
+  <!-- <h3 id="alertt"></h3> -->
+  <div class="alert-container" id="alertt">
+    <div class="alert-header">¡Alerta importante!</div>
+    <div><span id="alert-content2"></span></div>
+    <div class="alert-buttons">
+      <button class="alert-button" onclick="cerraralerta()">Aceptar</button>
+    </div>
+  </div>
 
 
   <div class="gastos">
     <h3 class="titulo">Gasto Semanal</h3>
-    
+
     <div id="correcto">CORRECTO</div>
 
     <div id="preinsu"> PRESUPUESTO INSUFICIENTE</div>
@@ -41,16 +43,16 @@
       <div class="add">
         <p class="here">Añade tus gastos aquí</p>
         <label for="nombre" id="addgastos">Gastos:</label>
-        <input type="text" id="preciogastos" name="nomgastos" placeholder="Nombre Gasto"/>
+        <input type="text" id="preciogastos" name="nomgastos" placeholder="Nombre Gasto" />
         <label for="apellido" id="addcantidad">Cantidad:</label>
-        <input type="tel" id="cantidad" name="cantidad" placeholder="Cantidad en $"/>
+        <input type="tel" id="cantidad" name="cantidad" placeholder="Cantidad en $" />
 
-        <button type="button" id="boton" class="boton" onclick="agregar()"> Agregar</button> 
+        <button type="button" id="boton" class="boton" onclick="agregar()"> Agregar</button>
       </div>
       <div class="part2">
         <p class="here">Listado</p>
 
-        <table >
+        <table>
           <thead>
           </thead>
           <tbody id="tabla">
@@ -58,19 +60,20 @@
           </tbody>
         </table>
 
-        <div  id="conp">Presupuesto: $
+        <div id="conp">Presupuesto: $
           <div class="presupuesto"></div>
-        <h5 id="escrito"></h5>
-      </div>
-      <div id="conr">Restante: $
-        <div class="restante"></div>
+          <h5 id="escrito"></h5>
+        </div>
+        <div id="conr">Restante: $
+          <div class="restante"></div>
           <h5 id="resta"></h5>
-      </div>
+        </div>
       </div>
 
-      </div>
     </div>
+  </div>
 
   </div>
 </body>
+
 </html>
