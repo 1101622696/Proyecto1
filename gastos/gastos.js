@@ -1,5 +1,3 @@
-
-
 let controlnumerico = /^[0-9]+$/;
 let presupuesto = 0
 let saldo = 0
@@ -55,11 +53,11 @@ function formulario(precio_gasto) {
     document.getElementById("cantidad").value = " ";
 
     console.log(gastossem);
-  }
+}
 
 function agregar() {
   if (document.getElementById("preciogastos").value == "") {
-    document.getElementById("alert-content").textContent = "Por favor el producto en gastos esta vacio"
+    document.getElementById("alert-content2").textContent = "Por favor el producto en gastos esta vacio"
     showAlertt()
 
   } else if (controlnumerico.test(document.getElementById("cantidad").value)) {
@@ -80,8 +78,8 @@ saldo = saldo - precio_gasto
                 document.getElementById("correcto").style.display = "none"
             }, 3000);
         }
-        else{ document.getElementById("alert-content").textContent = "saldo insuficiente para ese gasto"
-        showAlert()
+        else{ document.getElementById("alert-content2").textContent = "saldo insuficiente para ese gasto"
+        showAlertt()
 
         }
             if (saldo < 1) {
@@ -104,15 +102,16 @@ saldo = saldo - precio_gasto
 
     }
     else {
-        document.getElementById("alert-content").textContent = "Por favor digite una cantidad"
+        document.getElementById("alert-content2").textContent = "Por favor digite una cantidad"
         showAlertt()
     }
 
 }
+
 console.log(gastossem)
 
 
-function pintar(){
+function pintar() {
 
   let frag= document.createDocumentFragment()
   gastossem.forEach((item, index) => {
@@ -128,7 +127,7 @@ function pintar(){
   })
   td1.textContent=item.preciogastos
   td2.textContent=item.cantidad.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
-  td2.classList.add("valor_gasto");
+  // td2.classList.add("valor_gasto");
   td3.appendChild(eliminar)
   tr.appendChild(td1)
   tr.appendChild(td2)
