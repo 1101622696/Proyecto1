@@ -123,7 +123,7 @@ function pintar() {
     let eliminar = document.createElement("button")
     eliminar.textContent="❌"
         eliminar.addEventListener("click",()=>{
-    borrar(index)
+    borrar(item, index)
   })
   td1.textContent=item.preciogastos
   td2.textContent=item.cantidad.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
@@ -142,7 +142,7 @@ function borrar(i, x){
   gastossem.splice(index, 1);
   document.getElementById("tabla").innerHTML=""
 pintar()
-saldo = saldo + x.cantidad
+saldo = saldo + i.cantidad
 document.getElementById('resta').textContent = saldo.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
 document.getElementById("preinsu").style.display = "none"
 document.getElementById("conr").style.backgroundColor = "rgb(223, 170, 224)"
