@@ -49,8 +49,8 @@ function formulario(precio_gasto) {
     
     gastossem.push(usuario)
         
-    document.getElementById("preciogastos").value = " ";
-    document.getElementById("cantidad").value = " ";
+    document.getElementById("preciogastos").value = "";
+    document.getElementById("cantidad").value = "";
 
     console.log(gastossem);
 }
@@ -65,23 +65,19 @@ function agregar() {
 
 
     if (saldo > 0) {
-        if (saldo>=precio_gasto){
         formulario(precio_gasto)
         
 
      document.getElementById("tabla").innerHTML=""
 pintar()
+
 saldo = saldo - precio_gasto
             document.getElementById('resta').textContent = saldo.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
             document.getElementById("correcto").style.display = "flex"
             setTimeout(() => {
                 document.getElementById("correcto").style.display = "none"
             }, 3000);
-        }
-        else{ document.getElementById("alert-content2").textContent = "saldo insuficiente para ese gasto"
-        showAlertt()
-
-        }
+      
             if (saldo < 1) {
                 document.getElementById("preinsu").style.display = "flex"
 
@@ -92,8 +88,8 @@ saldo = saldo - precio_gasto
                 });
             }
         }
-        else {
-            document.getElementById("boton").disable = true
+        else{ document.getElementById("alert-content2").textContent = "saldo insuficiente para ese gasto"
+        showAlertt()
            
         }
         if (saldo <= 20000) {
@@ -102,7 +98,7 @@ saldo = saldo - precio_gasto
 
     }
     else {
-        document.getElementById("alert-content2").textContent = "Por favor digite una cantidad"
+        document.getElementById("alert-content2").textContent = " ingrese un valor en la casilla de cantidad "
         showAlertt()
     }
 
@@ -139,7 +135,7 @@ function pintar() {
 }
 function borrar(i, x){
   index=i
-  gastossem.splice(index, 1);
+  gastossem.splice(i, 1);
   document.getElementById("tabla").innerHTML=""
 pintar()
 saldo = saldo + i.cantidad
