@@ -65,6 +65,7 @@ function agregar() {
 
 
     if (saldo > 0) {
+      if (saldo>=precio_gasto){
         formulario(precio_gasto)
         
 
@@ -77,7 +78,11 @@ saldo = saldo - precio_gasto
             setTimeout(() => {
                 document.getElementById("correcto").style.display = "none"
             }, 3000);
-      
+            
+          }else{ document.getElementById("alert-content2").textContent = "saldo insuficiente para ese gasto"
+            showAlertt()
+               
+            }
             if (saldo < 1) {
                 document.getElementById("preinsu").style.display = "flex"
 
@@ -88,10 +93,7 @@ saldo = saldo - precio_gasto
                 });
             }
         }
-        else{ document.getElementById("alert-content2").textContent = "saldo insuficiente para ese gasto"
-        showAlertt()
-           
-        }
+
         if (saldo <= 20000) {
             document.getElementById("conr").style.backgroundColor = "red"
         }
