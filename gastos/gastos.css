@@ -7,11 +7,11 @@
   .gastos{
    display: flex;
    flex-direction: column;
-  margin-top: 10%;
+  margin-top: 3%;
   justify-content: center;
   align-items: center;
   width:800px;
-  height: 300px;
+  height: 500px;
   margin-left: auto;
   margin-right: auto;
   
@@ -41,24 +41,28 @@
   }
   .here{
     text-align: center;
-    font-weight:100;
+    font-size: 20px;
+    font-weight:300;
     color:rgb(223, 219, 219);
-    margin-top: 2%;
+    margin-top: 3%;
   }
   #preciogastos{
     margin-bottom: 2%;
-    margin-top: -5%;
+    background-color: rgb(216, 151, 176);
+    margin-top: -6%;
     width: 95%;
     height: 80%;
   }
   #cantidad{
     margin-bottom: 2%;
-    margin-top: -5%;
+    color: #0000;
+    background-color: rgb(216, 151, 176);
+    margin-top: -6%;
     width: 95%;
     height: 80%;
   }
   #boton{
-    width: 20%;
+    width: 30%;
     height: 60%;
     background-color:lightblue;
   }
@@ -82,9 +86,10 @@
       flex-direction: column;
       justify-content: center;
     }
-    /* table{
-    border:1px solid black;
-  } */
+    .part2{
+      display: grid;
+      margin-top:2%
+    }
 
   #correcto {
     display: none;
@@ -156,4 +161,29 @@
     border-radius: 3vmax;
     color: white;
   }
+
+  @media (max-width:660px) {
+.contenedor{
+  width: 70%;
+  height: 500px;
+}
+  }
+
+  @media (max-width:500px) {
+    .contenedor{
+      width: 90%;
+      height: 600px;
+      margin-left: -10
+    }
+    .gastos{
+      margin:0
+    }
+
+  }
+  #boton{
+    width: 40%;
+    height: 60%;
+    background-color:lightblue;
+  }
+
 
