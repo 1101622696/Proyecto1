@@ -167,3 +167,115 @@ padding-top: 2%;
   color:gray;
 }
 
+
+@media (1170px < width <1300px){
+img{
+  width:200px;
+  height: 230px;
+  margin-right: auto;
+  margin-left: auto;
+}
+}
+@media (1100px <= width <=1169px){
+  img{
+    width:200px;
+    height: 210px;
+  }
+  }
+  @media (930px <= width <=1099px){
+
+    img{
+      width:200px;
+      height: 240px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .cards{
+      display: grid;
+
+    }
+    button{
+      height: 40px;
+    }
+  }
+  @media (851px <= width <=929px){
+
+  #container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width:80%;
+  }
+}
+
+    @media (775px <= width <=850px){
+
+      img{
+        width:220px;
+        height: 250px;
+      }
+      
+      .piepagina{
+        height: 40vh;
+      }
+      #container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width:80%;
+      }
+    }
+  @media (700px <= width <=774px){
+
+        img{
+          width:200px;
+          height: 220px;
+        }
+        #container{
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          width:80%;
+        }
+      }
+ @media (400px < width <699px){
+
+          img{
+            width:320px;
+            height: 380px;
+            margin-right: auto;
+            margin-left: auto;
+          }
+          
+          #container{
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            width:80%;
+          }
+          h2{
+            font-size: xx-large;
+          }
+          .precio{
+            font-size: xx-large;
+          }
+          button{
+            height: 50px;
+          }
+        }
+          @media (300px < width <400px){
+            img{
+              width:220px;
+              height: 260px;
+              margin-right: auto;
+              margin-left: auto;
+            }
+            
+            .piepagina{
+              height: 50vh;
+              font-size: 15px;
+            }
+            #container{
+              display: grid;
+              grid-template-columns: repeat(1, 1fr);
+              width:80%;
+            }
+          }
+          
