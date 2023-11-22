@@ -14,42 +14,8 @@ let productos = [
 
 ] 
 
-
-
-// function pintar() {
-//   let fragment = document.createDocumentFragment();
-//   productos.forEach((item,index)=>{
-//       let div = document.createElement("div");
-//       div.classList.add("cards");
-//       let img = document.createElement("img");
-//       img.classList.add('ima')
-//       img.src= item.img
-//       let h2 = document.createElement("h2");
-//       h2.textContent = item.nombre
-//       let p = document.createElement("p")
-//       p.classList.add("precio");
-
-//       let button = document.createElement("button")
-//       button.textContent = "Agregar al carrito"
-//       button.addEventListener("click",()=>{
-//           console.log(item.id);
-//       })
-//       p.textContent = item.precio
-//       div.appendChild(img)
-//       div.appendChild(h2)
-//       div.appendChild(p)
-//       div.appendChild(button)
-//       fragment.appendChild(div)
-
-//   })
-
-//   document.getElementById("container").appendChild(fragment)
-
-// }
-
 let carrito = [];
 
-// Función para formatear el precio
 function formatearPrecio(precio) {
   return new Intl.NumberFormat("es-CO", {
     style: "currency",
@@ -57,7 +23,6 @@ function formatearPrecio(precio) {
   }).format(precio);
 }
 
-// Función para agregar un producto al carrito
 function agregarAlCarrito(producto) {
   const productoEnCarrito = carrito.find(item => item.id === producto.id);
 
@@ -70,7 +35,6 @@ function agregarAlCarrito(producto) {
   mostrarCarrito();
 }
 
-// Función para mostrar el carrito en el modal
 function mostrarCarrito() {
   const carritoProductos = document.getElementById("carritoProductos");
   carritoProductos.innerHTML = "";
@@ -138,19 +102,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Evento para cerrar el carrito al hacer clic en la 'X'
   const cerrarCarrito = document.getElementById("cerrarCarrito");
   cerrarCarrito.addEventListener("click", () => {
     const carritoModal = document.getElementById("carritoModal");
     carritoModal.style.display = "none";
   });
 
-  // Evento para vaciar el carrito
   const vaciarCarritoBtn = document.getElementById("vaciarCarrito");
   vaciarCarritoBtn.addEventListener("click", () => {
     carrito = [];
     mostrarCarrito();
   });
 
-  pintar(); // Llamar a la función para mostrar los productos al cargar la página
+  pintar(); 
 });
