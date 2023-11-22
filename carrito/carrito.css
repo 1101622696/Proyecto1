@@ -166,6 +166,22 @@ padding-top: 2%;
 .copy{
   color:gray;
 }
+i{
+color:black;
+margin-left: 320%;
+margin-top: 60%;
+font-size: 50px;
+cursor: pointer;
+}
+
+
+.tablacarro{
+  background-color: antiquewhite;
+  width:460%;
+  height: 100px;
+  overflow: scroll;
+  opacity: 0;
+}
 
 
 @media (1170px < width <1300px){
