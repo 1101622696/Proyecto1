@@ -8,6 +8,7 @@
     <script src="carrito.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Anton&family=Bebas+Neue&family=Libre+Franklin&family=Playfair+Display:ital,wght@1,400;1,500&family=Raleway:wght@100&display=swap" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,10 +20,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Bebas+Neue&family=Libre+Franklin&family=Playfair+Display:ital,wght@1,400;1,500&family=Quicksand:wght@300&family=Raleway:wght@100&family=Vina+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-<p class="marca">REAL CARDENAS</p>
-<p class="logo">RC</p>
-    </header>
+  <header>
+    <p class="marca">
+        REAL CARDENAS
+    </p>
+    <p class="rc">RC</p>
+    
+    <div class="logo">
+    <i class="fas fa-shopping-cart" id="logito"></i>
+    <table class="tablacarro">
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>precio</th>
+              <th>img</th>
+
+          </tr>
+      </thead>
+      <tbody id="tabla">
+
+      </tbody>
+    </table>
+  </div>
+  
+</header>
     <div class="intro">
         <div class="introduccion">
         <h2 class="titulo">Camisas de diferentes temporadas del Real Madrid</h2>
@@ -45,5 +66,7 @@
       <p class="fecha">Ubicanos en San Gil, Santander </p>
       </div>
   </div>
+
+
 </body>
 </html>
