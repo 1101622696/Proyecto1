@@ -14,9 +14,42 @@ let productos = [
 
 ] 
 
-document.addEventListener("DOMContentLoaded",()=>{
-  pintar()
-})
+
+
+// function pintar() {
+//   let fragment = document.createDocumentFragment();
+//   productos.forEach((item,index)=>{
+//       let div = document.createElement("div");
+//       div.classList.add("cards");
+//       let img = document.createElement("img");
+//       img.classList.add('ima')
+//       img.src= item.img
+//       let h2 = document.createElement("h2");
+//       h2.textContent = item.nombre
+//       let p = document.createElement("p")
+//       p.classList.add("precio");
+
+//       let button = document.createElement("button")
+//       button.textContent = "Agregar al carrito"
+//       button.addEventListener("click",()=>{
+//           console.log(item.id);
+//       })
+//       p.textContent = item.precio
+//       div.appendChild(img)
+//       div.appendChild(h2)
+//       div.appendChild(p)
+//       div.appendChild(button)
+//       fragment.appendChild(div)
+
+//   })
+
+//   document.getElementById("container").appendChild(fragment)
+
+// }
+
+let carrito = [];
+
+// Función para formatear el precio
 function formatearPrecio(precio) {
   return new Intl.NumberFormat("es-CO", {
     style: "currency",
@@ -24,50 +57,52 @@ function formatearPrecio(precio) {
   }).format(precio);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const carritoIcono = document.getElementById("logito");
-  const carritoSeccion = document.querySelector(".tablacarro");
-  let carritoVisible = false;
-  carritoIcono.addEventListener("click", function () {
-      if (carritoVisible) {
-          carritoSeccion.style.opacity = "0";
-      } else {
-          carritoSeccion.style.opacity = "1";
-      }
-      carritoVisible = !carritoVisible;
-  });
-});
+// Función para agregar un producto al carrito
+function agregarAlCarrito(producto) {
+  const productoEnCarrito = carrito.find(item => item.id === producto.id);
 
-function mostrarCarrito() {
-  tablacarro.innerHTML = '';
-  productos.forEach((producto) => {
-    const { nombre, precio, img } = producto;
+  if (productoEnCarrito) {
+    productoEnCarrito.cantidad++;
+  } else {
+    carrito.push({ ...producto, cantidad: 1 });
+  }
 
-    // Crear una fila para cada producto en la tabla
-    const filaProducto = document.createElement('tr');
-
-    // Crear celdas para el nombre, precio e imagen del producto
-    const celdaNombre = document.createElement('td');
-    const celdaPrecio = document.createElement('td');
-    const celdaImagen = document.createElement('td');
-    imagenProducto.src = img;
-    imagenProducto.alt = nombre; // Usar el nombre del producto como texto alternativo
-    imagenProducto.style.width = '50px'; // Establecer un ancho para la imagen
-    celdaImagen.appendChild(imagenProducto);
-
-    // Agregar las celdas a la fila del producto
-    filaProducto.appendChild(celdaNombre);
-    filaProducto.appendChild(celdaPrecio);
-    filaProducto.appendChild(celdaImagen);
-
-    // Agregar la fila a la tabla
-    tablaCarrito.appendChild(filaProducto);
-  });
+  mostrarCarrito();
 }
-function pintar(){
 
-  let fragment = document.createDocumentFragment();
-  productos.forEach((item,index)=>{
+// Función para mostrar el carrito en el modal
+function mostrarCarrito() {
+  const carritoProductos = document.getElementById("carritoProductos");
+  carritoProductos.innerHTML = "";
+
+  carrito.forEach(item => {
+    const div = document.createElement("div");
+    div.classList.add("producto-carrito");
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.nombre}">
+      <div>
+        <h3>${item.nombre}</h3>
+        <p>Precio: ${formatearPrecio(item.precio)}</p>
+        <p>Cantidad: ${item.cantidad}</p>
+        <p>Total: ${formatearPrecio(item.precio * item.cantidad)}</p>
+      </div>
+    `;
+    carritoProductos.appendChild(div);
+  });
+
+  calcularTotal();
+}
+
+function calcularTotal() {
+  const totalCarrito = document.getElementById("totalCarrito");
+  const total = carrito.reduce((total, item) => total + item.precio * item.cantidad, 0);
+  totalCarrito.textContent = formatearPrecio(total);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  function pintar() {
+    let fragment = document.createDocumentFragment();
+    productos.forEach((item,index)=>{
       let div = document.createElement("div");
       div.classList.add("cards");
       let img = document.createElement("img");
@@ -81,28 +116,41 @@ function pintar(){
       let button = document.createElement("button")
       button.textContent = "Agregar al carrito"
       button.addEventListener("click",()=>{
-          console.log(item.id);
+        agregarAlCarrito(item);
       })
-      p.textContent = item.precio
+      p.textContent = formatearPrecio(item.precio);
       div.appendChild(img)
       div.appendChild(h2)
       div.appendChild(p)
       div.appendChild(button)
       fragment.appendChild(div)
+    });
 
-  })
+    document.getElementById("container").appendChild(fragment);
+  }
 
-  document.getElementById("container").appendChild(fragment)
-}
+  const carritoIcono = document.getElementById("logito");
+  carritoIcono.addEventListener("click", () => {
+    const carritoModal = document.getElementById("carritoModal");
+    carritoModal.style.display = carritoModal.style.display === "block" ? "none" : "block";
+    if (carritoModal.style.display === "block") {
+      mostrarCarrito();
+    }
+  });
 
+  // Evento para cerrar el carrito al hacer clic en la 'X'
+  const cerrarCarrito = document.getElementById("cerrarCarrito");
+  cerrarCarrito.addEventListener("click", () => {
+    const carritoModal = document.getElementById("carritoModal");
+    carritoModal.style.display = "none";
+  });
 
-let tr = document.createElement("tr")
-    let td1 = document.createElement("td")
-    let td2 = document.createElement("td")
-    let td3 = document.createElement("td")
-    let eliminar = document.createElement("button")
-    eliminar.textContent="❌"
-    eliminar.addEventListener("click",()=>{
-    borrar(index)
-  })
+  // Evento para vaciar el carrito
+  const vaciarCarritoBtn = document.getElementById("vaciarCarrito");
+  vaciarCarritoBtn.addEventListener("click", () => {
+    carrito = [];
+    mostrarCarrito();
+  });
 
+  pintar(); // Llamar a la función para mostrar los productos al cargar la página
+});
