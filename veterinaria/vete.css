@@ -1,0 +1,45 @@
+body{
+margin:0;
+background-color: rgb(214, 157, 157);
+}
+
+.formulario{
+    width:50vw;
+    border:2px solid black;
+    height: 70vh;
+    box-sizing: border-box;
+    display:grid;
+    background-color: aquamarine;
+    /* margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%; */
+    margin:5% auto 5% auto
+}
+
+.inicio{
+box-sizing: border-box;
+width: 40vmax;
+height: 14vmax;
+border:2px solid black;
+display:grid;
+grid-template-columns: repeat(2, 1fr);
+margin-left:20%;
+margin-top: 2%;
+}
+
+
+.name{
+width:20vmax;
+height: 5vmax;
+display: grid;
+grid-template-columns:max-content;
+border:2px solid black;
+}
+
+.documento{
+border:2px solid black;
+width:45vmax;
+height:10vmax;
+display:grid;
+grid-template-columns: max-content;
+}
