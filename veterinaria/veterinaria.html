@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>veterinaria</title>
+    <script src="vet.js"></script>
+    <link rel="stylesheet" href="./vete.css">
+    
+</head>
+<body>
+    <div class="formulario">
+
+      <div class="inicio">
+
+        <div class="1">
+            <label for="fecha" id="fecha">Fecha</label>
+            <input type="date" id="fecha1" name="date"/>
+          </div>
+
+            <div class="1">
+            <label for="fecha" id="hora">Hora</label>
+            <input type="time" id="hora1" name="date"/>
+          </div>
+          
+            <div class="1">
+            <label for="doc">Telefono</label>
+            <input type="tel" id="numtel"placeholder="Número de teléfono">
+          </div>
+            <div class="1">
+            <label for="Propietario">Propietario</label>
+            <input type="text" id="Propietario" name="Propietario">
+          </div>
+        </div>
+          
+          <div class="name">
+            <div class="1">
+            <label for="nombre" id="nombretitulo">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            </div>
+            <div class="1">
+            <label for="opciones">Tipo</label>
+            <select id="opciones" name="opciones" required>
+              <option disabled selected="">seleccione</option>
+              <option value="gato">Gato</option>
+              <option value="Perro">Perro</option>
+              <option value="Hámster">Hámster</option>
+              <option value="Conejo">Conejo</option>
+              <option value="Ave">Ave</option>
+              <option value="Pez">Pez</option>
+              <option value="serpiente">Extranjera</option>
+            </select>
+            </div>
+          </div>
+          <div class="documento">
+          <label for="descripcion">descripcion:</label>
+            <textarea cols="70" rows="5" id="descripcion" placeholder="Ingrese una descripción" name="descripcion"></textarea>
+        </div>
+        <button type="button" id="enviar" class="boton" onclick="validar()"> Guardar</button> 
+        </div>
+</body>
+</html>
