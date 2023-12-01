@@ -67,7 +67,7 @@ letter-spacing: 3px;
   background: white url('46.png')center no-repeat;
   /* background-color: lightcyan; */
   width:70%;
-  height: 650px;
+  height: 750px;
   /* border: 1px solid black; */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
