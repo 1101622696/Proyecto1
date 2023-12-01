@@ -13,33 +13,139 @@ background-color: rgb(214, 157, 157);
     /* margin-left: auto;
     margin-right: auto;
     margin-top: 5%; */
-    margin:5% auto 5% auto
+    margin:5% auto 5% 1%
 }
 
 .inicio{
 box-sizing: border-box;
-width: 40vmax;
+width: 28vmax;
 height: 14vmax;
-border:2px solid black;
 display:grid;
 grid-template-columns: repeat(2, 1fr);
-margin-left:20%;
-margin-top: 2%;
+margin-left:40%;
+margin-top: 4%;
 }
-
 
 .name{
-width:20vmax;
-height: 5vmax;
+width:18vmax;
+height: 7vmax;
 display: grid;
 grid-template-columns:max-content;
-border:2px solid black;
+margin-top: -10%;
+margin-left: 3%;
+gap:10%;
+}
+.na{
+    display: grid;
+}
+#nombre{
+width:70%;
+}
+#fecha{
+width:80%;
+height: 2vmax;
+}
+#hora{
+    width:80%;
+    height: 2vmax;
+}
+#numtel{
+    width:80%;
+    height: 2vmax;
+}
+#Propietario{
+    width:80%;
+    height: 2vmax;
+
+
 }
 
+#opciones{
+    width:70%;
+    height: 2vmax;
+}
 .documento{
-border:2px solid black;
+/* border:2px solid black; */
 width:45vmax;
-height:10vmax;
+height:8vmax;
 display:grid;
 grid-template-columns: max-content;
+margin-left: 3%;
+
 }
+#enviar{
+    width:20%;
+    height:3vmax;
+    margin:3% auto 1% auto
+}
+.alert-container {
+    display: none; /* Oculta la alerta inicialmente */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #000000;
+    padding: 20px;
+    border: 2px solid rgb(120, 16, 189);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    color: rgb(112, 77, 136);
+   
+  }
+  
+  .alert-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .alert-content {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .alert-buttons {
+    text-align: right;
+  }
+  
+  .alert-button {
+    padding: 10px 20px;
+    background-color: rgb(85, 35, 105);
+    font-weight: 800;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-top: 3%;
+    
+  }
+  #alert{
+    display:block;
+  }
+  .ima{
+width:12vmax;
+height:8vmax;
+border:2px solid black;
+margin-top: -65%;
+  }
+  img{
+    width:160px;
+height:100px;
+  }
+  
+  textarea,
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+
+  
+  textarea[readonly],
+  input[readonly] {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: not-allowed;
+  }
