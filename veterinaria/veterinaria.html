@@ -21,37 +21,35 @@
   <h3>Citas Agendadas</h3>
   <div class="formulario">
     
- 
-      <div class="inicio">
-
-        <div class="1">
-            <label for="fecha" id="fecha1">Fecha</label>
-            <input type="date" id="fecha" name="date"/>
-          </div>
-
-            <div class="1">
-            <label for="fecha" id="hora1">Hora</label>
-            <input type="time" id="hora" name="date"/>
-          </div>
-          
-            <div class="1">
-            <label for="doc">Telefono</label>
-            <input type="tel" id="numtel"placeholder="Número de teléfono">
-          </div>
-            <div class="1">
-            <label for="Propietario">Propietario</label>
-            <input type="text" id="Propietario" placeholder="Dueño" name="Propietario">
-          </div>
-        </div>
-          
-          <div class="name">
-            <div class="ima" id="imagenMascotaContainer">
-              <img id="imagenMascota">
-            </div>
-            <div class="na">
+    
+    <div class="inicio">
+      
+      <div class="1">
+        <label for="fecha" id="fecha1">Fecha</label>
+        <input type="date" id="fecha" name="date"/>
+      </div>
+      
+      <div class="1">
+        <label for="fecha" id="hora1">Hora</label>
+        <input type="time" id="hora" name="date"/>
+      </div>
+      
+      <div class="1">
+        <label for="doc">Telefono</label>
+        <input type="tel" id="numtel"placeholder="Número de teléfono">
+      </div>
+      <div class="1">
+        <label for="Propietario" id="propi">Propietario</label>
+        <input type="text" id="Propietario" placeholder="Dueño" name="Propietario">
+      </div>
+    </div>
+    
+    <div class="name">
+              <div class="ima" id="imagenMascotaContainer">
+                <img id="imagenMascota" alt="foto de su mascota">
+              </div>
             <label for="nombre" id="nombretitulo">Nombre:</label>
             <input type="text" id="nombre" name="nombre">
-            </div>
             <div class="tipo">
             <label for="opciones">Tipo</label>
             <select id="opciones" name="opciones" required>
@@ -73,15 +71,8 @@
         <button type="button" id="enviar" class="boton" onclick="validar()"> Guardar</button> 
         </div>
 
-        <!-- <table>
-          <thead>
-          </thead>
-          <tbody id="tabla">
 
-          </tbody>
-        </table> -->
-
-        <div id="container">
+        <div id="contenedor">
         </div>
 </body>
 </html>
