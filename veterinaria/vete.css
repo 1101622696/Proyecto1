@@ -6,14 +6,11 @@ background-color: rgb(214, 157, 157);
 .formulario{
     width:50vw;
     border:2px solid black;
-    height: 70vh;
+    height: 75vh;
     box-sizing: border-box;
     display:grid;
     background-color: aquamarine;
-    /* margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%; */
-    margin:5% auto 5% 1%
+    margin:5% auto 5% auto
 }
 
 .inicio{
@@ -27,17 +24,17 @@ margin-top: 4%;
 }
 
 .name{
-width:18vmax;
-height: 7vmax;
+width:15vmax;
+height: 17vmax;
 display: grid;
+box-sizing: border-box;
 grid-template-columns:max-content;
-margin-top: -10%;
+margin-top: -30%;
 margin-left: 3%;
-gap:10%;
+gap:4%;
+/* border:2px solid black; */
 }
-.na{
-    display: grid;
-}
+
 #nombre{
 width:70%;
 }
@@ -66,20 +63,21 @@ height: 2vmax;
 }
 .documento{
 /* border:2px solid black; */
-width:45vmax;
+width:85%;
 height:8vmax;
 display:grid;
 grid-template-columns: max-content;
 margin-left: 3%;
-
+margin-top: 2%;
 }
+
 #enviar{
     width:20%;
     height:3vmax;
     margin:3% auto 1% auto
 }
 .alert-container {
-    display: none; /* Oculta la alerta inicialmente */
+    display: none; 
     position: fixed;
     top: 50%;
     left: 50%;
@@ -126,26 +124,55 @@ margin-left: 3%;
   .ima{
 width:12vmax;
 height:8vmax;
-border:2px solid black;
-margin-top: -65%;
-  }
+margin-bottom: 10%;
+ }
+
   img{
-    width:160px;
-height:100px;
-  }
-  
-  textarea,
-  input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
+    width:110%;
+    height: 110%;
+    }
+    .container{
+      width:50vw;
+      border:2px solid black;
+      height: 75vh;
+      box-sizing: border-box;
+      display:grid;
+      background-color: aquamarine;
+      margin:5% auto 5% auto
   }
 
-  
-  textarea[readonly],
-  input[readonly] {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    cursor: not-allowed;
+
+  .inicio1{
+    box-sizing: border-box;
+    width: 28vmax;
+    height: 14vmax;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left:40%;
+    margin-top: 4%;
+border:2px solid blue;
+    }
+    .name1{
+      width:15vmax;
+      height: 17vmax;
+      display: grid;
+      box-sizing: border-box;
+      grid-template-columns:max-content;
+      margin-top: -30%;
+      margin-left: 3%;
+      gap:4%;
+      border:2px solid red;
+      }
+      .documento1{
+        width:85%;
+        height:8vmax;
+        display:grid;
+        grid-template-columns: max-content;
+        margin-left: 3%;
+        margin-top: 2%;
+        border:2px solid black
+        }
+  .p1{
+    font-size:medium;
+    color:black;
   }
