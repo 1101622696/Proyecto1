@@ -1,3 +1,4 @@
+
 let mascotas = [
   { id: 1, nombre: "gato", img: "gato.png" },
   { id: 2, nombre: "Perro", img: "perro.png" },
