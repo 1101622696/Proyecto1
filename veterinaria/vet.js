@@ -267,7 +267,6 @@ function pintar() {
     // name1.appendChild(opciones1);
     documento1.appendChild(descripcion1);
     final1.appendChild(editar);
-    final1.appendChild(eliminar);
     div.appendChild(inicio1)
     div.appendChild(name1)
     div.appendChild(documento1);
