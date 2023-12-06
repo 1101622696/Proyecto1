@@ -2,8 +2,8 @@
 let mascotas = [
   { id: 1, nombre: "gato", img: "gato.png" },
   { id: 2, nombre: "Perro", img: "perro.png" },
-  { id: 3, nombre: "Hámster", img: "conejo.png" },
-  { id: 4, nombre: "Conejo", img: "hamster.png" },
+  { id: 3, nombre: "Hámster", img: "hamster.png" },
+  { id: 4, nombre: "Conejo", img: "conejo.png" },
   { id: 5, nombre: "Ave", img: "ave.png" },
   { id: 6, nombre: "Pez", img: "pez.png" },
   { id: 7, nombre: "Serpiente", img: "serpiente.png" }
@@ -167,37 +167,66 @@ function pintar() {
 
     let inicio1 = document.createElement("inicio1");
     inicio1.classList.add("inicio1");
-    let hora1 = document.createElement("p");
-    hora1.textContent = `Hora: ${item.hora}`;
-    hora1.classList.add("p1");
+
+    let inicio2 = document.createElement("inicio2");
+    inicio2.classList.add("inicio2");
+
+    let fecha2 = document.createElement("p");
+    fecha2.textContent = "fecha:";
     let fecha = document.createElement("p");
-    fecha.textContent = `Fecha de cita: ${item.fecha}`;
-    fecha.classList.add("p1");
+    fecha.innerHTML = `<input type='text' id="texto" value="${item.fecha}" readonly/>`
+    // fecha.classList.add("p1");
+    let inicio3 = document.createElement("inicio3");
+    inicio3.classList.add("inicio3");
+    let hora1 = document.createElement("p");
+    hora1.innerHTML = `<input type='text' id="texto" value="${item.hora}" readonly/>`
+    let hora2 = document.createElement("p");
+    hora2.textContent = "hora:";
+    // hora1.classList.add("p1");
+    let inicio4 = document.createElement("inicio4");
+    inicio4.classList.add("inicio4");
     let numtel1 = document.createElement("p");
-    numtel1.textContent = `Teléfono: ${item.numtel}`;
-    numtel1.classList.add("p1");
+    numtel1.innerHTML = `<input type='text' id="texto" value="${item.numtel}" readonly/>`
+    let numtel2 = document.createElement("p");
+    numtel2.textContent = "Teléfono:";
+    // numtel1.classList.add("p1");
+    let inicio5 = document.createElement("inicio5");
+    inicio5.classList.add("inicio5");
     let propi1 = document.createElement("p");
-    propi1.textContent = `Propietario: ${item.Propietario}`;
-    propi1.classList.add("p1");
+    propi1.innerHTML = `<input type='text' id="texto" value="${item.Propietario}" readonly/>`
+    let propi2 = document.createElement("p");
+    propi2.textContent = "Dueño:";
+    // propi1.classList.add("p1");
     let name1 = document.createElement("name1");
     name1.classList.add("name1"); 
+
     let img = document.createElement("img");
     let src = mascotas.find((mascota) => mascota.nombre === item.opciones)?.img;
     img.src = src ? src : "";
     img.alt = `Imagen de un ${item.opciones}`;
-    img.classList.add('ima');
+    img.classList.add("ima1");
+
+    let name2 = document.createElement("name2");
+    name2.classList.add("name2"); 
+
+    let nombre2 = document.createElement("p");
+    nombre2.textContent = "Nombre:";
     let nombre1 = document.createElement("p");
-    nombre1.textContent = `Nombre de la mascota: ${item.nombre}`;
-    nombre1.classList.add("p1");
+    nombre1.innerHTML = `<input type='text' id="texto" value="${item.nombre}" readonly/>`
+    // nombre1.classList.add("p1");
+    let opciones2 = document.createElement("p");
+    opciones2.textContent = "Mascota";
     let opciones1 = document.createElement("p");
-    opciones1.textContent = `Mascota: ${item.opciones}`;
-    opciones1.classList.add("p1");
+    opciones1.innerHTML = `<input type='text' id="texto" value="${item.opciones}" readonly/>`
+    // opciones1.classList.add("p1");
     let documento1 = document.createElement("documento1");
     documento1.classList.add("documento1");
     let descripcion1 = document.createElement("p");
     descripcion1.textContent = `Síntomas que posee: ${item.descripcion}`;
-    descripcion1.classList.add("p1");
+    // descripcion1.classList.add("p1");
 
+    let final1 = document.createElement("final1");
+    final1.classList.add("final1");
 
     let editar = document.createElement("button");
     editar.textContent = "Editar";
@@ -205,25 +234,44 @@ function pintar() {
       edita(item, index);
     });
     
-    let eliminar = document.createElement("button");
-    eliminar.textContent = "Eliminar";
-    eliminar.addEventListener("click", () => {
-      borrar(index);
-    });
+    // let eliminar = document.createElement("p");
+    // eliminar.innerHTML = `<select name="select" id="select" onchange="mostrar()">
+    // <option value="python">python</option>
+    // <option value="java">java</option>
+    // <option value="javascript">javascript</option>
+    // <option value="php">php</option>
+    // </select>`
+    // eliminar.mostrar()
+    
 
-    inicio1.appendChild(fecha);
-    inicio1.appendChild(hora1);
-    inicio1.appendChild(numtel1);
-    inicio1.appendChild(propi1);
+    inicio1.appendChild(inicio2);
+    inicio1.appendChild(inicio3);
+    inicio1.appendChild(inicio4);
+    inicio1.appendChild(inicio5);
+    inicio2.appendChild(fecha2);
+    inicio2.appendChild(fecha);
+    inicio3.appendChild(hora2);
+    inicio3.appendChild(hora1);
+    inicio4.appendChild(numtel2);
+    inicio4.appendChild(numtel1);
+    inicio5.appendChild(propi2);
+    inicio5.appendChild(propi1);
     name1.appendChild(img);
-    name1.appendChild(nombre1);
-    name1.appendChild(opciones1);
+    name1.appendChild(name2);
+    name2.appendChild(nombre2);
+    name2.appendChild(nombre1);
+    name2.appendChild(opciones2);
+    name2.appendChild(opciones1);
+    // name1.appendChild(nombre1);
+    // name1.appendChild(opciones2);
+    // name1.appendChild(opciones1);
     documento1.appendChild(descripcion1);
+    final1.appendChild(editar);
+    final1.appendChild(eliminar);
     div.appendChild(inicio1)
     div.appendChild(name1)
-    div.appendChild(documento1)
-    div.appendChild(editar);
-    div.appendChild(eliminar);
+    div.appendChild(documento1);
+    div.appendChild(final1)
     fragment.appendChild(div);
   });
 
@@ -241,11 +289,4 @@ function edita(r, i) {
   document.getElementById("fecha").value = r.fecha;
   document.getElementById("numtel").value = r.numtel;
   document.getElementById("hora").value = r.hora;
-}
-
-function borrar(i, x) {
-  index = i;
-  mascota.splice(index, 1);
-  document.getElementById("container").innerHTML = "";
-  pintar();
 }
