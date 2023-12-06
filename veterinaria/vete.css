@@ -122,15 +122,46 @@ margin-top: 2%;
     display:block;
   }
   .ima{
-width:12vmax;
-height:8vmax;
-margin-bottom: 10%;
- }
+/* border:2px solid red; */
+width:13vmax;
+height:9vmax;
+  }
+/* .ima{
+  background:#fff url('hamster.png');
+  background-position: 0 0;
+  width:13vmax;
+  height:9vmax;
+  animation: walk 4s steps(6) infinite;    
+}
+@keyframes walk {
+from{
+  background-position:0 0;
+}
+to{
+  background-position: -600px 0;
+}
+} */
 
-  img{
-    width:110%;
-    height: 110%;
-    }
+/* .ima1{
+  background:#fff url('ave.png');
+  background-position: 0 0;
+  width:200px;
+  height:300px;
+  animation: walk 4s steps(6) infinite;    
+}
+@keyframes walk {
+from{
+  background-position:0 0;
+}
+to{
+  background-position: -600px 0;
+}
+} */
+
+.ima1{
+  width:13vmax;
+height:9vmax;
+}
     .container{
       width:50vw;
       border:2px solid black;
@@ -144,35 +175,65 @@ margin-bottom: 10%;
 
   .inicio1{
     box-sizing: border-box;
-    width: 28vmax;
+    width: 27vmax;
     height: 14vmax;
     display:grid;
     grid-template-columns: repeat(2, 1fr);
     margin-left:40%;
-    margin-top: 4%;
-border:2px solid blue;
+    margin-top: 10%;
+/* border:2px solid blue; */
     }
     .name1{
       width:15vmax;
-      height: 17vmax;
-      display: grid;
+      height: 20vmax;
       box-sizing: border-box;
-      grid-template-columns:max-content;
+      display: grid;
+      grid-template-columns: min-content;
       margin-top: -30%;
       margin-left: 3%;
-      gap:4%;
-      border:2px solid red;
+      /* border:2px solid red; */
       }
       .documento1{
         width:85%;
-        height:8vmax;
+        height:4vmax;
         display:grid;
         grid-template-columns: max-content;
         margin-left: 3%;
-        margin-top: 2%;
-        border:2px solid black
+        margin-top: 1%;
+        /* border:2px solid black; */
         }
   .p1{
     font-size:medium;
     color:black;
   }
+  .final1{
+    width:30%;
+    height:2vmax;
+    margin:-3% auto -3% auto;
+    /* border:2px solid gray; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap:1%;
+}
+.name2{
+  width:100%;
+  height: 90%;
+  /* border:2px solid gray; */
+  display: grid;
+  grid-template-columns:repeat(2, 1fr);
+}
+#texto{
+  width:6vw;
+  height: 5vh;
+  overflow:scroll;
+  margin-left: -20%;
+}
+.inicio2, .inicio3, .inicio4, .inicio5{
+  /* border:2px solid gray; */
+  width:12vw;
+  height: 8vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+
