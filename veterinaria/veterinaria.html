@@ -6,6 +6,10 @@
     <title>veterinaria</title>
     <script src="vet.js"></script>
     <link rel="stylesheet" href="./vete.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Bebas+Neue&family=Libre+Franklin&family=Playfair+Display:ital,wght@1,400;1,500&family=Quicksand:wght@300&family=Raleway:wght@100&family=Vina+Sans&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -17,11 +21,17 @@
       <button class="alert-button" onclick="cerraralerta()">Aceptar</button>
     </div>
   </div>
-  
-  <h3>Citas Agendadas</h3>
+  <div class="citas">
+  <h3 class="titulo1">CITAS AGENDADAS</h3>
+
+  <div id="contenedorBoton">
+    <button id="click" onclick="activar()">+</button>
+  </div>
+
+<DIV class="cifor" style="display: none;">
+  <div class="cifor1">
   <div class="formulario">
-    
-    
+
     <div class="inicio">
       
       <div class="1">
@@ -70,6 +80,45 @@
         </div>
         <button type="button" id="enviar" class="boton" onclick="validar()"> Guardar</button> 
         </div>
+
+        <div class="buscar">
+          <ul>
+        <li><input type="radio" name="progra" id="abierta" value="abierta" onclick="mostraruno()"><label for="interesado">Abierta</label></li>  
+         <li><input type="radio" name="progra" id="cerrada"value="cerrada"  onclick="mostraruno()"><label for="interesado">Cerrada</label> </li>
+        <li><input type="radio" name="progra" id="anulada"value="anulada" onclick="mostraruno()" ><label for="php">Anulada</label> </li>
+        </ul>
+      </div>
+    </DIV>
+        
+  </div>
+      </div>
+      
+      <div id="contenedor">
+      </div>
+
+
+
+
+        <!-- <input type="radio" name="progra" id="py" value="python" onclick="mostrar()"><label for="interesado">Estoy en python</label> 
+        <input type="radio" name="progra" id="java"value="java"  onclick="mostrar()"><label for="interesado">Estoy en java</label> 
+        <input type="radio" name="progra" id="js"value="javascript" onclick="mostrar()"><label for="javascritp">Estoy en javascript</label> 
+        <input type="radio" name="progra" id="php"value="php" onclick="mostrar()" ><label for="php">Estoy en php</label> 
+      <script>
+      function mostrar(){
+        if(document.getElementById("py").checked){
+        alert("Estoy en python")
+        }if(document.getElementById("java").checked){
+        alert("Estoy en java" )
+         } if(document.getElementById("js").checked){
+        alert("Estoy en javascript") 
+          } if(document.getElementById("php").checked){
+        alert("Estoy en php" )
+      }
+      } -->
+
+
+</body>
+</html>
 
 
         <div id="contenedor">
