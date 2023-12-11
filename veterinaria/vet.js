@@ -1,3 +1,7 @@
+function activar() {
+  let ciforDiv = document.querySelector('.cifor');
+  ciforDiv.style.display = (ciforDiv.style.display === 'none' || ciforDiv.style.display === '') ? 'block' : 'none';
+}
 
 let mascotas = [
   { id: 1, nombre: "gato", img: "gato.png" },
@@ -234,15 +238,13 @@ function pintar() {
       edita(item, index);
     });
     
-    // let eliminar = document.createElement("p");
-    // eliminar.innerHTML = `<select name="select" id="select" onchange="mostrar()">
-    // <option value="python">python</option>
-    // <option value="java">java</option>
-    // <option value="javascript">javascript</option>
-    // <option value="php">php</option>
-    // </select>`
-    // eliminar.mostrar()
-    
+    let escoger = document.createElement("p");
+    escoger.innerHTML = `<select name="select" id="select" onchange="mostrar()">
+    <option value="Abierto">Abierto</option>
+    <option value="Cerrada">Cerrada</option>
+    <option value="Anulada">Anulada</option>
+    </select>`  
+    escoger.onchange="mostrar()"
 
     inicio1.appendChild(inicio2);
     inicio1.appendChild(inicio3);
@@ -262,11 +264,9 @@ function pintar() {
     name2.appendChild(nombre1);
     name2.appendChild(opciones2);
     name2.appendChild(opciones1);
-    // name1.appendChild(nombre1);
-    // name1.appendChild(opciones2);
-    // name1.appendChild(opciones1);
     documento1.appendChild(descripcion1);
     final1.appendChild(editar);
+    final1.appendChild(escoger);
     div.appendChild(inicio1)
     div.appendChild(name1)
     div.appendChild(documento1);
@@ -289,3 +289,38 @@ function edita(r, i) {
   document.getElementById("numtel").value = r.numtel;
   document.getElementById("hora").value = r.hora;
 }
+
+  function mostrar(){
+    alert(document.getElementById("select").value)
+  }
+  function mostraruno(){
+    if(document.getElementById("abierta").checked){
+    alert("citas abiertas")
+    }if(document.getElementById("cerrada").checked){
+    alert("citas cerradas" )
+     } if(document.getElementById("anulada").checked){
+    alert("citas anuladas") 
+     }
+  }
+
+
+
+  let abiertas=[];
+
+  let cerradas=[];
+
+  let anuladas=[];
+
+
+/* <select name="select" id="select" onchange="mostrar()">
+<option value="python">python</option>
+<option value="java">java</option>
+<option value="javascript">javascript</option>
+<option value="php">php</option>
+</select>
+
+<script>
+  function mostrar(){
+    alert(document.getElementById("select").value)
+  }
+  </script>   */
