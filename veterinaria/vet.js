@@ -16,24 +16,6 @@ const mascota = [];
 let op = null;
 let indice = null;
 
-//  
-
-function cambiarImagenMascota(tipoMascota) {
-  let imagenMascota = document.getElementById("imagenMascota");
-
-  let mascotaInfo = mascotas.find(
-    (m) => m.nombre.toLowerCase() === tipoMascota.toLowerCase()
-  );
-
-  if (mascotaInfo) {
-    imagenMascota.src = mascotaInfo.img;
-    imagenMascota.alt = `Imagen de un ${tipoMascota}`;
-  } else {
-    imagenMascota.src = ""; 
-    imagenMascota.alt = "";
-  }
-}
-
 function showAlertt() {
   document.getElementById("alertt").style.display = "block";
 }
@@ -162,6 +144,12 @@ function compararHoras(hora1, hora2) {
     return hora1.minutos - hora2.minutos;
   }
 }
+let abiertas=[];
+
+let cerradas=[];
+
+let anuladas=[];
+
 function pintar() {
   let fragment = document.createDocumentFragment();
 
@@ -240,9 +228,10 @@ function pintar() {
     
     let escoger = document.createElement("p");
     escoger.innerHTML = `<select name="select" id="select" onchange="mostrar()">
-    <option value="Abierto">Abierto</option>
-    <option value="Cerrada">Cerrada</option>
-    <option value="Anulada">Anulada</option>
+    <option disabled selected="">seleccione</option>
+    <option value="Abierto" id="abierto">Abierto</option>
+    <option value="Cerrado" id="cerrado">Cerrada</option>
+    <option value="Anulado" id="anulado">Anulada</option>
     </select>`  
     escoger.onchange="mostrar()"
 
@@ -289,35 +278,55 @@ function edita(r, i) {
   document.getElementById("numtel").value = r.numtel;
   document.getElementById("hora").value = r.hora;
 }
+function mostrar() {
+  const generador = document.querySelector('.container');
+  const opcionsele = document.getElementById("select").value;
 
-  function mostrar(){
-    alert(document.getElementById("select").value)
+  if (opcionsele === "Abierto") {
+    if (!abiertas.includes(generador.outerHTML)) {
+      abiertas.push(generador.outerHTML);
+    }
+  } else if (opcionsele === "Cerrado") {
+    if (!cerradas.includes(generador.outerHTML)) {
+      cerradas.push(generador.outerHTML);
+    }
+  } else if (opcionsele === "Anulado") {
+    if (!anuladas.includes(generador.outerHTML)) {
+      anuladas.push(generador.outerHTML);
+    }
   }
-  function mostraruno(){
-    if(document.getElementById("abierta").checked){
-    alert("citas abiertas")
-    }if(document.getElementById("cerrada").checked){
-    alert("citas cerradas" )
-     } if(document.getElementById("anulada").checked){
-    alert("citas anuladas") 
-     }
+
+  generador.remove();
+  mostraruno();
+}
+
+function mostraruno() {
+  const contenedorMostrar = document.getElementById("contenedor");
+
+  // Limpiar el contenido actual del contenedor
+  contenedorMostrar.innerHTML = "";
+
+  // Obtén el array correspondiente según la opción seleccionada
+  let citasArray = [];
+  if (estado === "Abierto") {
+    citasArray = abiertas;
+  } else if (estado === "Cerrado") {
+    citasArray = cerradas;
+  } else if (estado === "Anulado") {
+    citasArray = anuladas;
   }
+  // Muestra las citas en el contenedor
+  mostrarCitasEnContenedor(citasArray, contenedorMostrar);
+}
 
+function mostrarCitasEnContenedor(citasArray, contenedorMostrar) {
+  citasArray.forEach((citaHTML) => {
+    const citaContainer = document.createElement("div");
+    citaContainer.innerHTML = citaHTML;
+    contenedorMostrar.appendChild(citaContainer);
+  });
+}
 
-
-  let abiertas=[];
-
-  let cerradas=[];
-
-  let anuladas=[];
-
-
-/* <select name="select" id="select" onchange="mostrar()">
-<option value="python">python</option>
-<option value="java">java</option>
-<option value="javascript">javascript</option>
-<option value="php">php</option>
-</select>
 
 <script>
   function mostrar(){
