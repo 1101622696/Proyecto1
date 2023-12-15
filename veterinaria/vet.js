@@ -1,3 +1,9 @@
+
+let abiertas=[];
+
+let cerradas=[];
+
+let anuladas=[];
 function activar() {
   let ciforDiv = document.querySelector('.cifor');
   ciforDiv.style.display = (ciforDiv.style.display === 'none' || ciforDiv.style.display === '') ? 'block' : 'none';
@@ -12,7 +18,6 @@ let mascotas = [
   { id: 6, nombre: "Pez", img: "pez.png" },
   { id: 7, nombre: "Serpiente", img: "serpiente.png" }
 ];
-const mascota = [];
 let op = null;
 let indice = null;
 
@@ -25,91 +30,91 @@ function cerraralerta() {
 }
 
 function formulario() {
-  let nombre = document.getElementById("nombre").value;
-  let Propietario = document.getElementById("Propietario").value;
-  let fecha = document.getElementById("fecha").value;
-  let opciones = document.getElementById("opciones").value;
-  let descripcion = document.getElementById("descripcion").value;
-  let numtel = document.getElementById("numtel").value;
-  let hora = document.getElementById("hora").value;
-
-  if (op === true) {
-    mascota[indice].nombre = document.getElementById("nombre").value;
-    mascota[indice].Propietario = document.getElementById("Propietario").value;
-    mascota[indice].fecha = document.getElementById("fecha").value;
-    mascota[indice].opciones = document.getElementById("opciones").value;
-    mascota[indice].descripcion = document.getElementById("descripcion").value;
-    mascota[indice].numtel = document.getElementById("numtel").value;
-    mascota[indice].hora = document.getElementById("hora").value;
-  } else {
-    let usuario = {
-      nombre: nombre,
-      Propietario: Propietario,
-      fecha: fecha,
-      opciones: opciones,
-      descripcion: descripcion,
-      numtel: numtel,
-      hora: hora,
-    };
-
-    mascota.push(usuario);
-  }
-
-  document.getElementById("nombre").value = "";
-  document.getElementById("Propietario").value = "";
-  document.getElementById("fecha").value = "";
-  document.getElementById("opciones").value = "";
-  document.getElementById("descripcion").value = "";
-  document.getElementById("numtel").value = "";
-  document.getElementById("hora").value = "";
-
-  console.log(mascota);
-}
-
-
+  // let nombre = document.getElementById("nombre").value;
+  // let Propietario = document.getElementById("Propietario").value;
+  // let fecha = document.getElementById("fecha").value;
+  // let opciones = document.getElementById("opciones").value;
+  // let descripcion = document.getElementById("descripcion").value;
+  // let numtel = document.getElementById("numtel").value;
+  // let hora = document.getElementById("hora").value;
+  
+  // if (op === true) {
+    //   mascota[indice].nombre = document.getElementById("nombre").value;
+    //   mascota[indice].Propietario = document.getElementById("Propietario").value;
+    //   mascota[indice].fecha = document.getElementById("fecha").value;
+    //   mascota[indice].opciones = document.getElementById("opciones").value;
+    //   mascota[indice].descripcion = document.getElementById("descripcion").value;
+    //   mascota[indice].numtel = document.getElementById("numtel").value;
+    //   mascota[indice].hora = document.getElementById("hora").value;
+    // } else {
+      let usuario = {
+        nombre: document.getElementById("nombre").value,
+        Propietario: document.getElementById("Propietario").value,
+        fecha: document.getElementById("fecha").value,
+        opciones: document.getElementById("opciones").value,
+        descripcion: document.getElementById("descripcion").value,
+        numtel: document.getElementById("numtel").value,
+        hora: document.getElementById("hora").value,
+      };
+      
+      abiertas.push(usuario);
+      
+      
+      document.getElementById("nombre").value = "";
+      document.getElementById("Propietario").value = "";
+      document.getElementById("fecha").value = "";
+      document.getElementById("opciones").value = "";
+      document.getElementById("descripcion").value = "";
+      document.getElementById("numtel").value = "";
+      document.getElementById("hora").value = "";
+      
+      console.log(abiertas);
+    }
+    
+    
 function validar() {
   if (document.getElementById("nombre").value == "") {
     document.getElementById("alert-content2").textContent =
-      "Por favor digite el nombre";
+    "Por favor digite el nombre";
     showAlertt();
   } else if (document.getElementById("Propietario").value == "") {
     document.getElementById("alert-content2").textContent =
-      "Por favor digite el nombre del Propietario";
+    "Por favor digite el nombre del Propietario";
     showAlertt();
   } else if (  new Date().getFullYear() - new Date(document.getElementById("fecha").value).getFullYear() <18) {
     document.getElementById("alert-content2").textContent =
-      "Por favor digite la fecha, debe tener más de 18";
+    "Por favor digite la fecha, debe tener más de 18";
     showAlertt();
   } else if (document.getElementById("opciones").value == "seleccione") {
     document.getElementById("alert-content2").textContent =
-      "Por favor seleccione una opcion";
+    "Por favor seleccione una opcion";
     showAlertt();
   } else if (document.getElementById("descripcion").value.length < 3) {
     document.getElementById("alert-content2").textContent =
-      "Por favor escriba los síntomas de su mascota";
+    "Por favor escriba los síntomas de su mascota";
     showAlertt();
   } else if (document.getElementById("numtel").value.length < 10) {
     document.getElementById("alert-content2").textContent =
-      "Por favor digite su número de teléfono";
+    "Por favor digite su número de teléfono";
     showAlertt();
   } else if (
     !validarFormatoHora(document.getElementById("hora").value) ||
     !validarHoraEnIntervalo(document.getElementById("hora").value)
-  ) {
-    document.getElementById("alert-content2").textContent =
+    ) {
+      document.getElementById("alert-content2").textContent =
       "Por favor ingrese una hora que esté entre las 8 am a 12pm y de 2pm a 5pm";
-    showAlertt();
-  } else {
-    formulario();
-
-    document.getElementById("contenedor").innerHTML=""
-    pintar()
-
-    op = false;
+      showAlertt();
+    } else {
+      formulario();
+      
+      document.getElementById("contenedor").innerHTML=""
+      pintar("abiertas")
+      
+      op = false;
+    }
   }
-}
-
-function validarFormatoHora(hora) {
+  
+  function validarFormatoHora(hora) {
   const formatoHora = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
   return formatoHora.test(hora);
 }
@@ -121,14 +126,14 @@ function validarHoraEnIntervalo(hora) {
   const intervalo1Fin = obtenerObjetoHora("12:00");
   const intervalo2Inicio = obtenerObjetoHora("14:00");
   const intervalo2Fin = obtenerObjetoHora("17:00");
-
+  
   const enIntervalo1 =
-    compararHoras(horaObj, intervalo1Inicio) >= 0 &&
-    compararHoras(horaObj, intervalo1Fin) <= 0;
+  compararHoras(horaObj, intervalo1Inicio) >= 0 &&
+  compararHoras(horaObj, intervalo1Fin) <= 0;
   const enIntervalo2 =
-    compararHoras(horaObj, intervalo2Inicio) >= 0 &&
-    compararHoras(horaObj, intervalo2Fin) <= 0;
-
+  compararHoras(horaObj, intervalo2Inicio) >= 0 &&
+  compararHoras(horaObj, intervalo2Fin) <= 0;
+  
   return enIntervalo1 || enIntervalo2;
 }
 
@@ -144,15 +149,26 @@ function compararHoras(hora1, hora2) {
     return hora1.minutos - hora2.minutos;
   }
 }
-let abiertas=[];
 
-let cerradas=[];
 
-let anuladas=[];
+function pintar(progra) {
+  document.getElementById("contenedor").innerHTML = "";
+  
+  let mascota = [];
 
-function pintar() {
+  switch (progra) {
+    case "abiertas":
+      mascota = abiertas;
+      break;
+      case "cerradas":
+        mascota = cerradas;
+      break;
+    case "anuladas":
+      mascota = anuladas;
+      break;
+  }
   let fragment = document.createDocumentFragment();
-
+  
   mascota.forEach((item, index) => {
     let div = document.createElement("div");
     div.classList.add("container");
@@ -225,15 +241,47 @@ function pintar() {
     editar.addEventListener("click", () => {
       edita(item, index);
     });
+    let estado = document.createElement("select");
+    estado.id = "estado";
+    estado.classList.add("botonc");
+    let opciones = ["Abierta", "Cerrada", "Anulada"];
+    opciones.forEach((opcion, index) => {
+      let option = document.createElement("option");
+      option.value = index;
+      option.textContent = opcion;
+      estado.appendChild(option);
+    });
+
+    estado.addEventListener("change", () => {
+      let selectedValue = estado.value;
+
+      switch (selectedValue) {
+        case "0":
+          abiertas.push(mascota[index]);
+      
+          break;
+        case "1":
+          cerradas.push(mascota[index]);
+
+          break;
+        case "2":
+          anuladas.push(mascota[index]);
+
+          break;
+      }
+      borrar(index, progra);
+      console.log(progra);
+      console.log(index);
+    });
     
-    let escoger = document.createElement("p");
-    escoger.innerHTML = `<select name="select" id="select" onchange="mostrar()">
-    <option disabled selected="">seleccione</option>
-    <option value="Abierto" id="abierto">Abierto</option>
-    <option value="Cerrado" id="cerrado">Cerrada</option>
-    <option value="Anulado" id="anulado">Anulada</option>
-    </select>`  
-    escoger.onchange="mostrar()"
+    // let escoger = document.createElement("p");
+    // escoger.innerHTML = `<select name="select" id="select" onchange="mostrar()">
+    // <option disabled selected="">seleccione</option>
+    // <option value="Abierto" id="abierto">Abierto</option>
+    // <option value="Cerrado" id="cerrado">Cerrada</option>
+    // <option value="Anulado" id="anulado">Anulada</option>
+    // </select>`  
+    // escoger.onchange="mostrar()"
 
     inicio1.appendChild(inicio2);
     inicio1.appendChild(inicio3);
@@ -255,7 +303,7 @@ function pintar() {
     name2.appendChild(opciones1);
     documento1.appendChild(descripcion1);
     final1.appendChild(editar);
-    final1.appendChild(escoger);
+    final1.appendChild(estado);
     div.appendChild(inicio1)
     div.appendChild(name1)
     div.appendChild(documento1);
@@ -264,6 +312,24 @@ function pintar() {
   });
 
   document.getElementById("contenedor").appendChild(fragment);
+}
+function borrar(i, progra) {
+  index = i;
+
+  switch (progra) {
+    case "abiertas":
+      abiertas.splice(index, 1);
+      break;
+    case "cerradas":
+      cerradas.splice(index, 1);
+      break;
+    case "anuladas":
+      anuladas.splice(index, 1);
+      break;
+  }
+
+  document.getElementById("contenedor").innerHTML = "";
+  pintar(progra);
 }
 
 function edita(r, i) {
@@ -278,58 +344,54 @@ function edita(r, i) {
   document.getElementById("numtel").value = r.numtel;
   document.getElementById("hora").value = r.hora;
 }
-function mostrar() {
-  const generador = document.querySelector('.container');
-  const opcionsele = document.getElementById("select").value;
-
-  if (opcionsele === "Abierto") {
-    if (!abiertas.includes(generador.outerHTML)) {
-      abiertas.push(generador.outerHTML);
-    }
-  } else if (opcionsele === "Cerrado") {
-    if (!cerradas.includes(generador.outerHTML)) {
-      cerradas.push(generador.outerHTML);
-    }
-  } else if (opcionsele === "Anulado") {
-    if (!anuladas.includes(generador.outerHTML)) {
-      anuladas.push(generador.outerHTML);
-    }
-  }
-
-  generador.remove();
-  mostraruno();
-}
-
-function mostraruno() {
-  const contenedorMostrar = document.getElementById("contenedor");
-
-  // Limpiar el contenido actual del contenedor
-  contenedorMostrar.innerHTML = "";
-
-  // Obtén el array correspondiente según la opción seleccionada
-  let citasArray = [];
-  if (estado === "Abierto") {
-    citasArray = abiertas;
-  } else if (estado === "Cerrado") {
-    citasArray = cerradas;
-  } else if (estado === "Anulado") {
-    citasArray = anuladas;
-  }
-  // Muestra las citas en el contenedor
-  mostrarCitasEnContenedor(citasArray, contenedorMostrar);
-}
-
-function mostrarCitasEnContenedor(citasArray, contenedorMostrar) {
-  citasArray.forEach((citaHTML) => {
-    const citaContainer = document.createElement("div");
-    citaContainer.innerHTML = citaHTML;
-    contenedorMostrar.appendChild(citaContainer);
-  });
-}
 
 
-<script>
-  function mostrar(){
-    alert(document.getElementById("select").value)
-  }
-  </script>   */
+
+// function mostrar() {
+//   const generador = document.querySelector('.container');
+//   const opcionsele = document.getElementById("select").value;
+
+//   if (opcionsele === "Abierto") {
+//     if (!abiertas.includes(generador.outerHTML)) {
+//       abiertas.push(generador.outerHTML);
+//     }
+//   } else if (opcionsele === "Cerrado") {
+//     if (!cerradas.includes(generador.outerHTML)) {
+//       cerradas.push(generador.outerHTML);
+//     }
+//   } else if (opcionsele === "Anulado") {
+//     if (!anuladas.includes(generador.outerHTML)) {
+//       anuladas.push(generador.outerHTML);
+//     }
+//   }
+
+//   generador.remove();
+//   mostraruno();
+// }
+
+// function mostraruno() {
+//   const contenedorMostrar = document.getElementById("contenedor");
+
+//   // Limpiar el contenido actual del contenedor
+//   contenedorMostrar.innerHTML = "";
+
+//   // Obtén el array correspondiente según la opción seleccionada
+//   let mascota = [];
+//   if (estado === "Abierto") {
+//     mascota = abiertas;
+//   } else if (estado === "Cerrado") {
+//     mascota = cerradas;
+//   } else if (estado === "Anulado") {
+//     mascota = anuladas;
+//   }
+//   // Muestra las citas en el contenedor
+//   mostrarCitasEnContenedor(mascota, contenedorMostrar);
+// }
+
+// function mostrarCitasEnContenedor(mascota, contenedorMostrar) {
+//   mascota.forEach((citaHTML) => {
+//     const citaContainer = document.createElement("div");
+//     citaContainer.innerHTML = citaHTML;
+//     contenedorMostrar.appendChild(citaContainer);
+//   });
+// }
