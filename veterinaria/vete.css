@@ -325,7 +325,16 @@ button{
     height: 8vh;
 }
 
+.botonc{
+  width: 4dvh;
+  height: auto;
+  transition: transform .2s;
+  border-radius: 1vmax;
+  border-color: white;
+}
 
+.botonc:hover{
+  box-shadow: 6px  6px 10px  rgba(0, 0, 0, 0.884);
+  transform: scale(1.2);
 
-
-
+}
