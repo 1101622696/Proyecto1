@@ -29,7 +29,6 @@ function cerraralerta() {
   document.getElementById("alertt").style.display = "none";
 }
 
-
 function formulario() {
   let nombre = document.getElementById("nombre").value;
   let Propietario = document.getElementById("Propietario").value;
@@ -74,7 +73,6 @@ function formulario() {
     }
   }
   
-    
 function validar() {
   if (document.getElementById("nombre").value == "") {
     document.getElementById("alert-content2").textContent =
@@ -347,54 +345,3 @@ function edita(r, i) {
   document.getElementById("numtel").value = r.numtel;
   document.getElementById("hora").value = r.hora;
 }
-
-
-
-// function mostrar() {
-//   const generador = document.querySelector('.container');
-//   const opcionsele = document.getElementById("select").value;
-
-//   if (opcionsele === "Abierto") {
-//     if (!abiertas.includes(generador.outerHTML)) {
-//       abiertas.push(generador.outerHTML);
-//     }
-//   } else if (opcionsele === "Cerrado") {
-//     if (!cerradas.includes(generador.outerHTML)) {
-//       cerradas.push(generador.outerHTML);
-//     }
-//   } else if (opcionsele === "Anulado") {
-//     if (!anuladas.includes(generador.outerHTML)) {
-//       anuladas.push(generador.outerHTML);
-//     }
-//   }
-
-//   generador.remove();
-//   mostraruno();
-// }
-
-// function mostraruno() {
-//   const contenedorMostrar = document.getElementById("contenedor");
-
-//   // Limpiar el contenido actual del contenedor
-//   contenedorMostrar.innerHTML = "";
-
-//   // Obtén el array correspondiente según la opción seleccionada
-//   let mascota = [];
-//   if (estado === "Abierto") {
-//     mascota = abiertas;
-//   } else if (estado === "Cerrado") {
-//     mascota = cerradas;
-//   } else if (estado === "Anulado") {
-//     mascota = anuladas;
-//   }
-//   // Muestra las citas en el contenedor
-//   mostrarCitasEnContenedor(mascota, contenedorMostrar);
-// }
-
-// function mostrarCitasEnContenedor(mascota, contenedorMostrar) {
-//   mascota.forEach((citaHTML) => {
-//     const citaContainer = document.createElement("div");
-//     citaContainer.innerHTML = citaHTML;
-//     contenedorMostrar.appendChild(citaContainer);
-//   });
-// }
