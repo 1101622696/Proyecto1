@@ -29,32 +29,34 @@ function cerraralerta() {
   document.getElementById("alertt").style.display = "none";
 }
 
+
 function formulario() {
-  // let nombre = document.getElementById("nombre").value;
-  // let Propietario = document.getElementById("Propietario").value;
-  // let fecha = document.getElementById("fecha").value;
-  // let opciones = document.getElementById("opciones").value;
-  // let descripcion = document.getElementById("descripcion").value;
-  // let numtel = document.getElementById("numtel").value;
-  // let hora = document.getElementById("hora").value;
+  let nombre = document.getElementById("nombre").value;
+  let Propietario = document.getElementById("Propietario").value;
+  let fecha = document.getElementById("fecha").value;
+  let opciones = document.getElementById("opciones").value;
+  let descripcion = document.getElementById("descripcion").value;
+  let numtel = document.getElementById("numtel").value;
+  let hora = document.getElementById("hora").value;
   
-  // if (op === true) {
-    //   mascota[indice].nombre = document.getElementById("nombre").value;
-    //   mascota[indice].Propietario = document.getElementById("Propietario").value;
-    //   mascota[indice].fecha = document.getElementById("fecha").value;
-    //   mascota[indice].opciones = document.getElementById("opciones").value;
-    //   mascota[indice].descripcion = document.getElementById("descripcion").value;
-    //   mascota[indice].numtel = document.getElementById("numtel").value;
-    //   mascota[indice].hora = document.getElementById("hora").value;
-    // } else {
+  if (op === true) {
+      abiertas[indice].nombre = document.getElementById("nombre").value;
+      abiertas[indice].Propietario = document.getElementById("Propietario").value;
+      abiertas[indice].fecha = document.getElementById("fecha").value;
+      abiertas[indice].opciones = document.getElementById("opciones").value;
+      abiertas[indice].descripcion = document.getElementById("descripcion").value;
+      abiertas[indice].numtel = document.getElementById("numtel").value;
+      abiertas[indice].hora = document.getElementById("hora").value;
+    } else {
       let usuario = {
-        nombre: document.getElementById("nombre").value,
-        Propietario: document.getElementById("Propietario").value,
-        fecha: document.getElementById("fecha").value,
-        opciones: document.getElementById("opciones").value,
-        descripcion: document.getElementById("descripcion").value,
-        numtel: document.getElementById("numtel").value,
-        hora: document.getElementById("hora").value,
+        nombre: nombre,
+        Propietario: Propietario,
+        fecha: fecha,
+        opciones: opciones,
+        fecha: fecha,
+        descripcion: descripcion,
+        numtel: numtel,
+        hora: hora
       };
       
       abiertas.push(usuario);
@@ -70,7 +72,8 @@ function formulario() {
       
       console.log(abiertas);
     }
-    
+  }
+  
     
 function validar() {
   if (document.getElementById("nombre").value == "") {
