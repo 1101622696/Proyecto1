@@ -50,10 +50,24 @@ font-family: 'Anton', sans-serif;
 }
 .nombre{
   font-weight: bolder;
-  font-size:150%;
-font-family: 'Playfair Display', serif;
-letter-spacing: 3px;
+  font-size:50px;
+/* font-family: 'Playfair Display', serif;
+letter-spacing: 3px; */
+  display: block;
+  font-family: monospace;
+  white-space: nowrap;
+  border-right: 4px solid;
+  width:17ch;
 
+  animation:typing 2s steps(12),
+  blink .5s infinite step-end alternate;
+  overflow: hidden;
+}
+@keyframes typing{
+  from {width:0}
+}
+@keyframes blink{
+  50%{border-color: transparent;}
 }
 .year{
   font-family: 'Bebas Neue', sans-serif;
