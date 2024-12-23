@@ -1,79 +1,803 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="es-col">
+
 <head>
+  <base target="_top">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>formulario</title>
-  <link rel="stylesheet" href="./styles.css">
-<script src="formulario.js"></script>  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/css/piloto.css">
+  <script src="/js/departamentos.js"></script>
+  <script src="/js/piloto.js"></script>
+
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <?!= include('2.csspiloto') ?>
+
 </head>
-<body>
-  <h3 id="alert"></h3>
-<div class="formulario">
-  <div class="titulo">
-    <h1>Formulario de registro</h1>
+
+<body class="body">
+  <div class="container">
+    <nav class="navbar navbar-expand bg-body-tertiary">
+      <div class="container-fluid">
+        <img src="https://lirp.cdn-website.com/f9e0297f/dms3rep/multi/opt/favicones-web-1920w.png" width="40" height="40" alt="Logo">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <label class="label2">SVA - Sevicol</label>
+            </li>
+          </ul>
+          <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <span class="navbar-text">
+                Bienvenid@ <?= username ?>
+              </span>
+            </div>
+          </nav>
+          <button onclick="cerrarSesion()" class="btn btn-outline-success">Cerrar Sesión</button>
+        </div>
+      </div>
+    </nav>
   </div>
-    <div class="inicio">
-      <label for="nombre" id="nombretitulo">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Escriba su nombre"/>
-      <label for="apellido">Apellidos:</label>
-      <input type="text" id="apellido" name="apellido" placeholder="Escriba su apellido"/>
-    </div>
-    <div class="sexo">
-      <label for="sexo">Sexo:</label>
-      <input type="radio" id="hombre" name="genero" value="hombre"/>
-      <label for="sexo">Hombre</label>
-      <input type="radio" id="mujer" name="genero" value="mujer"/>
-      <label for="sexo">Mujer</label>
-    </div>
-<div class="cyfecha">
-      <label for="sexo">Correo:</label>
-      <input type="email" id="correo" name="correo" placeholder="Escriba su email"/>
 
-      <label for="fecha" id="fechanac">Fecha de nacimiento:</label>
-      <input type="date" id="fecha" name="date"/>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col text-center mb-3">
+        <button class="btn btn-primary" style="margin-right: 10px;" onclick="mostrarDiv('divsolicituddevuelo')">Solicitud de Vuelo</button>
+        <button class="btn btn-primary" style="margin-right: 10px;" onclick="mostrarDiv('divprevuelo'); onLoadprevuelo();">Pre Vuelo</button>
+        <button class="btn btn-primary" style="margin-right: 10px;" onclick="mostrarDiv('divreporte')">Reporte</button>
+        <button class="btn btn-primary" style="margin-right: 10px;" onclick="mostrarDiv('divpostvuelo')">Post Vuelo</button>
+        <button class="btn btn-primary" onclick="mostrarDiv('divbitacoras')">Bitacoras</button>
+      </div>
     </div>
-    <div class="documento">
-      <label for="opciones">Tipo de documento</label>
-      <select id="opciones" name="opciones" required>
-        <option disabled selected="">selecciona un tipo de documento</option>
-          <option value="ti">Tarjeta de identidad</option>
-          <option value="Cedula">Cédula</option>
-          <option value="extranjera">Extranjera</option>
-      </select>
-    
-      <label for="doc">Numero de Documento:</label>
-      <input type="tel" id="ndoc"placeholder="escriba su numero de documento">
+  </div>
 
-      <label for="doc">Numero de telefono:</label>
-      <input type="tel" id="numtel"placeholder="escriba su numero de telefono">
+
+
+  <!-- Este es el contenedor principal que estará oculto inicialmente -->
+  <div id="containerContent" class="container" style="display: none;">
+
+
+    <!--------------------------------------------------------------------------- Solicitud de Vuelo ------------------------------------------------------>
+
+    <div id="divsolicituddevuelo" style="display: none;">
+      <h3 class="title">Solicitud de Autorización de Vuelo</h3>
+      <h3 class="titulo-centrado">1. DATOS DEL SOLICITANTE</h3>
+
+      <form id="solicitudVueloForm" onsubmit="guardarDatosSolicitudVuelo(event)">
+
+        <input type="hidden" id="useremail" name="useremail" value="<?= useremail ?>">
+
+        <!-- Preguntas de entrada de datos -->
+        <div class="form-group row">
+          <label for="nombre_completo" class="col-sm-4 col-form-label">Nombre Completo:</label>
+          <div class="col-sm-8">
+            <input type="text" id="nombre_completo" name="nombre_completo" class="form-control" >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="tipo_documento" class="col-sm-4 col-form-label">Tipo de Documento de Identificación:</label>
+          <div class="col-sm-8">
+            <select id="tipo_documento" name="tipo_documento" class="form-control" >
+          <option value="">Seleccionar</option>
+          <option value="CC">Cédula de Ciudadanía</option>
+          <option value="TI">Tarjeta de Identidad</option>
+          <option value="CE">Cédula de Extranjería</option>
+          <option value="PAS">Pasaporte</option>
+        </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="numero_documento" class="col-sm-4 col-form-label">Número de Documento de Identificación:</label>
+          <div class="col-sm-8">
+            <input type="text" id="numero_documento" name="numero_documento" class="form-control" >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="correo" class="col-sm-4 col-form-label">Correo Electrónico:</label>
+          <div class="col-sm-8">
+            <input type="email" id="correo" name="correo" class="form-control" >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="numero_contacto" class="col-sm-4 col-form-label">Número de Contacto:</label>
+          <div class="col-sm-8">
+            <input type="text" id="numero_contacto" name="numero_contacto" class="form-control" >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="direccion" class="col-sm-4 col-form-label">Dirección de Residencia:</label>
+          <div class="col-sm-8">
+            <input type="text" id="direccion" name="direccion" class="form-control" >
+          </div>
+        </div>
+
+        <div style="height: 40px;"></div>
+
+        <h3 class="titulo-centrado">2. TIPO DE OPERACIÓN AÉREA</h3>
+
+        <div class="form-group row">
+          <label for="tipodeoperacionaerea" class="col-sm-4 col-form-label">Seleccione el tipo de operación aérea:</label>
+          <div class="col-sm-8">
+            <select id="tipodeoperacionaerea" name="tipodeoperacionaerea" class="form-control" >
+          <option value="">Seleccionar</option>
+          <option value="SIMPLE CAPTURA DE IMÁGENES O DATOS">SIMPLE CAPTURA DE IMÁGENES O DATOS.</option>
+          <option value="CAPTURA DE IMÁGENES O DATOS, PARA MEDIOS MASIVOS DE COMUNICACIÓN">CAPTURA DE IMÁGENES O DATOS, PARA MEDIOS MASIVOS DE COMUNICACIÓN.</option>
+          <option value="DISPERSIÓN">DISPERSIÓN.</option>
+          <option value="TRANSPORTE DE CARGA (“DRONE DELIVERY”)">TRANSPORTE DE CARGA (“DRONE DELIVERY”).</option>
+          <option value="ACTIVIDADES MISIONALES DE ENTIDADES PÚBLICAS">ACTIVIDADES MISIONALES DE ENTIDADES PÚBLICAS.</option>
+          <option value="CAPTURA DE IMÁGENES O DATOS CON FINES DE VIGILANCIA Y SEGURIDAD PRIVADA">CAPTURA DE IMÁGENES O DATOS CON FINES DE VIGILANCIA Y SEGURIDAD PRIVADA.</option>
+          <option value="ASPERSIÓN">ASPERSIÓN.</option>
+          <option value="ENJAMBRE">ENJAMBRE.</option>
+          <option value="INSTRUCCIÓN">INSTRUCCIÓN.</option>
+        </select>
+          </div>
+        </div>
+
+        <div style="height: 40px;"></div>
+
+        <h3 class="titulo-centrado">3. INFORMACIÓN DE LA OPERACIÓN AÉREA</h3>
+
+        <div class="form-group row">
+          <label for="empresa" class="col-sm-4 col-form-label">Empresa Contratante del Servicio:</label>
+          <div class="col-sm-8">
+            <input type="text" id="empresa" name="empresa" class="form-control"  >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="fecha_inicio" class="col-sm-4 col-form-label">Fecha Propuesta Inicio Operación Aérea (Día/Mes/Año):</label>
+          <div class="col-sm-4">
+            <input type="date" id="fecha_inicio" name="fecha_inicio" class="form-control"  >
+          </div>
+          <label for="hora_inicio" class="col-sm-2 col-form-label">Horario Hora de Inicio:</label>
+          <div class="col-sm-2">
+            <input type="time" id="hora_inicio" name="hora_inicio" class="form-control"  >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="fecha_fin" class="col-sm-4 col-form-label">Fecha Propuesta Finalización Operación Aérea (Día/Mes/Año):</label>
+          <div class="col-sm-4">
+            <input type="date" id="fecha_fin" name="fecha_fin" class="form-control"  >
+          </div>
+          <label for="hora_fin" class="col-sm-2 col-form-label">Horario Hora de Finalización:</label>
+          <div class="col-sm-2">
+            <input type="time" id="hora_fin" name="hora_fin" class="form-control"  >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="detalles_cronograma" class="col-sm-4 col-form-label">Otros Detalles del Cronograma de Operación:</label>
+          <div class="col-sm-8">
+            <textarea id="detalles_cronograma" name="detalles_cronograma" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="peso_maximo" class="col-sm-4 col-form-label">Peso (Masa) Bruto Máximo de Operación (KG):</label>
+          <div class="col-sm-8">
+            <input type="number" id="peso_maximo" name="peso_maximo" class="form-control"  >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="municipio" class="col-sm-4 col-form-label">Municipio:</label>
+          <div class="col-sm-4">
+            <input type="text" id="municipio" name="municipio" class="form-control"  >
+          </div>
+          <label for="departamento" class="col-sm-2 col-form-label">Departamento:</label>
+          <div class="col-sm-2">
+            <input type="text" id="departamento" name="departamento" class="form-control"  >
+          </div>
+        </div>
+
+        <div style="height: 40px;"></div>
+        <h3 class="titulo-centrado">4. TIPO DE CONTACTO VISUAL CON LA UA</h3>
+
+        <div class="form-group row">
+          <label for="tipodecontactovisualconlaua" class="col-sm-4 col-form-label">Seleccione el tipo de contacto visual con la UA:</label>
+          <div class="col-sm-8">
+            <select id="tipodecontactovisualconlaua" name="tipodecontactovisualconlaua" class="form-control"  >
+          <option value="">Seleccionar</option>
+          <option value="vlos">VLOS (Hasta 750 metros)</option>
+          <option value="evlos">EVLOS (Hasta 3.000 metros con observador(es))</option>
+          <option value="bvlos">BVLOS (Distancia aprobada en la operación aérea)</option>
+        </select>
+          </div>
+        </div>
+
+
+
+        <div style="height: 40px;"></div>
+        <h3 class="titulo-centrado">5. VUELO ESPECIAL</h3>
+        <div class="form-group row">
+          <label for="vueloespecial" class="col-sm-4 col-form-label">Seleccione el tipo de vuelo especial:</label>
+          <div class="col-sm-8">
+            <select id="vueloespecial" name="vueloespecial" class="form-control"  >
+          <option value="">Seleccionar</option>
+          <option value="VUELO NOCTURNO">VUELO NOCTURNO</option>
+          <option value="VUELO AUTÓNOMO ">VUELO AUTÓNOMO </option>
+          <option value="VUELO DE UA CAUTIVA">VUELO DE UA CAUTIVA</option>
+          <option value="VUELO EN ZONA URBANA">VUELO EN ZONA URBANA</option>
+          <option value="VUELOS PARA DEMOSTRACIONES COMERCIALES O DE CAPACIDAD TECNOLÓGICA DE UAS">VUELOS PARA DEMOSTRACIONES COMERCIALES O DE CAPACIDAD TECNOLÓGICA DE UAS</option>
+          <option value="VUELOS EN COMPETENCIAS Y ACTIVIDADES DEPORTIVAS Y RECREATIVAS AL AIRE LIBRE">VUELOS EN COMPETENCIAS Y ACTIVIDADES DEPORTIVAS Y RECREATIVAS AL AIRE LIBRE</option>
+        </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="justificacionvueloespecial" class="col-sm-4 col-form-label">Justificación:</label>
+          <div class="col-sm-8">
+            <textarea id="justificacionvueloespecial" name="justificacionvueloespecial" class="form-control"></textarea>
+          </div>
+        </div>
+
+
+        <div style="height: 40px;"></div>
+        <h3 class="titulo-centrado">6. COORDENADAS DE LA OPERACIÓN AÉREA</h3>
+        <h4 class='subtitulo'>Nota: Las coordenadas deben consignarse en formato WGS-84 (grados, minutos, segundos)</h4>
+
+
+        <div style="border-top: 1px solid #000; margin: 10px 0;"></div>
+
+        <div class="form-group row">
+          <label for="poligononombre" class="col-sm-4 col-form-label">POLÍGONO (Nombre):</label>
+          <div class="col-sm-8">
+            <input type="text" id="poligononombre" name="poligononombre" class="form-control"  >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="altura_poligono" class="col-sm-4 col-form-label">Altura solicitada: (metros / pies)</label>
+          <div class="col-sm-8">
+            <input type="text" id="altura_poligono" name="altura_poligono" class="form-control"  >
+          </div>
+        </div>
+
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>LATITUD (N/S)</th>
+              <th>LONGITUD (W)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><input type="text" name="latitud_poligono_1" class="form-control"  ></td>
+              <td><input type="text" name="longitud_poligono_1" class="form-control"  ></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><input type="text" name="latitud_poligono_2" class="form-control"  ></td>
+              <td><input type="text" name="longitud_poligono_2" class="form-control"  ></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><input type="text" name="latitud_poligono_3" class="form-control"  ></td>
+              <td><input type="text" name="longitud_poligono_3" class="form-control"  ></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><input type="text" name="latitud_poligono_4" class="form-control"  ></td>
+              <td><input type="text" name="longitud_poligono_4" class="form-control"  ></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><input type="text" name="latitud_poligono_5" class="form-control"  ></td>
+              <td><input type="text" name="longitud_poligono_5" class="form-control"  ></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <i>* Esta opción se podrá repetir de acuerdo con la cantidad de polígonos a solicitar y aumentar la cantidad de coordenadas que conforman el polígono. La última coordenada debe coincidir con la primera coordenada escrita para así cerrar el polígono.</i>
+        </p>
+
+        <div style="border-top: 1px solid #000; margin: 10px 0;"></div>
+        <div class="form-group row">
+          <label for="tramolinealnombre" class="col-sm-4 col-form-label">TRAMO LINEAL (Nombre):</label>
+          <div class="col-sm-8">
+            <input type="text" id="tramolinealnombre" name="tramolinealnombre" class="form-control"  >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="altura_tramo" class="col-sm-4 col-form-label">Altura solicitada: (metros / pies)</label>
+          <div class="col-sm-8">
+            <input type="text" id="altura_tramo" name="altura_tramo" class="form-control"  >
+          </div>
+        </div>
+
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>LATITUD (N/S)</th>
+              <th>LONGITUD (W)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><input type="text" name="latitud_tramo_1" class="form-control"  ></td>
+              <td><input type="text" name="longitud_tramo_1" class="form-control"  ></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><input type="text" name="latitud_tramo_2" class="form-control"  ></td>
+              <td><input type="text" name="longitud_tramo_2" class="form-control"  ></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><input type="text" name="latitud_tramo_3" class="form-control"  ></td>
+              <td><input type="text" name="longitud_tramo_3" class="form-control"  ></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><input type="text" name="latitud_tramo_4" class="form-control"  ></td>
+              <td><input type="text" name="longitud_tramo_4" class="form-control"  ></td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><input type="text" name="latitud_tramo_5" class="form-control"  ></td>
+              <td><input type="text" name="longitud_tramo_5" class="form-control"  ></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <i>* Esta opción se podrá repetir de acuerdo con la cantidad de tramos lineales a solicitar y aumentar la cantidad de coordenadas que conforman el tramo lineal.</i>
+        </p>
+
+        <div style="border-top: 1px solid #000; margin: 10px 0;"></div>
+
+        <div class="form-group row">
+          <label for="circuferenciaencoordenadayradionombre" class="col-sm-4 col-form-label">CIRCUNFERENCIA EN COORDENADA Y RADIO (Nombre):</label>
+          <div class="col-sm-8">
+            <input type="text" id="circuferenciaencoordenadayradionombre" name="circuferenciaencoordenadayradionombre" class="form-control"  >
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="altura_circunferencia" class="col-sm-4 col-form-label">Altura solicitada: (metros / pies)</label>
+          <div class="col-sm-8">
+            <input type="text" id="altura_circunferencia" name="altura_circunferencia" class="form-control"  >
+          </div>
+        </div>
+
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>ITEM</th>
+              <th>LATITUD (N/S)</th>
+              <th>LONGITUD (W)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><input type="text" name="latitud_circunferencia_1" class="form-control"  ></td>
+              <td><input type="text" name="longitud_circunferencia_1" class="form-control"  ></td>
+            </tr>
+          </tbody>
+        </table>
+        <p><i>* Esta opción se podrá repetir de acuerdo a la cantidad de coordenadas a solicitar.</i></p>
+
+        <div style="border-top: 1px solid #000; margin: 10px 0;"></div>
+        <div style="height: 40px;"></div>
+        <h3 class="titulo-centrado">12. DOCUMENTOS DIGITALES REQUERIDOS (Marcar los documentos que adjunta)</h3>
+
+
+        <!-- Pregunta 2 -->
+        <div class="form-group">
+          <label for="check_kmz">Archivo electrónico en formato KMZ/KML con el (los) polígono(s), tramo(s) lineal(es), o la circunferencia(s) en los cuales solicita la operación aérea, graficado en coordenadas en formato WGS-84 (grados, minutos, segundos).</label>
+          <input type="checkbox" id="check_kmz" name="check_kmz" onchange="toggleInput('check_kmz', 'file_kmz')">
+          <input type="file" id="file_kmz" name="file_kmz" class="form-control-file" style="display:none;">
+        </div>
+
+
+        <!-- Se pueden agregar más campos si es necesario -->
+        <div style="height: 40px;"></div>
+        <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+      </form>
     </div>
 
-      <button type="button" id="enviar" class="boton" onclick="validar()"> Enviar</button> 
+
+    <!-------------------------------------------------------------------------------- Pre Vuelo ------------------------------------------------------>
+
+    <div id="divprevuelo" style="display: none;">
+      <h3 class="title">Lista de chequeo Pre-Vuelo UAS</h3>
+      <form id="prevueloForm" onsubmit="guardarDatosPrevuelo(event)">
+
+        <input type="hidden" id="useremail2" name="useremail2" value="<?= useremail ?>">
+
+        <div class="form-group row">
+          <label for="solicitudesAprobadas" class="col-sm-4 col-form-label">Selecciona la solicitud de vuelo:</label>
+          <select id="solicitudesAprobadas" name="solicitudesAprobadas" class="form-control" onchange="onIdentifierChangeprevuelo()">
+          <!-- Opciones se llenarán dinámicamente -->
+          </select>
+        </div>
+
+        <div class="form-group row">
+          <label for="piloto" class="col-sm-4 col-form-label">Piloto al Mando:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="piloto" name="piloto"></span>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label for="permiso" class="col-sm-4 col-form-label">Permiso de operación No.:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="permiso" name="permiso"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="fecha" class="col-sm-4 col-form-label">Fecha:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="fecha" name="fecha"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="ubicacion" class="col-sm-4 col-form-label">Ubicación:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="ubicacion" name="ubicacion"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="modelo" class="col-sm-4 col-form-label">Modelo UAS:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="modelo" name="modelo"></span>
+          </div>
+        </div>
+
+        <!-- Pregunta desplegable para propósito del vuelo -->
+        <div class="form-group row">
+          <label for="proposito" class="col-sm-4 col-form-label">Propósito del vuelo:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="proposito" name="proposito"></span>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label for="autorizacion" class="col-sm-4 col-form-label">Autorización de vuelo en espacio aéreo restringido:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="autorizacion" name="autorizacion"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="autorizado_por" class="col-sm-4 col-form-label">Autorizado por:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="autorizado_por" name="autorizado_por"></span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="fecha_autorizacion" class="col-sm-4 col-form-label">Fecha de Autorización:</label>
+          <div class="col-sm-8">
+            <span class="indicator" id="fecha_autorizacion" name="fecha_autorizacion"></span>
+          </div>
+        </div>
+
+
+        <!-- Sección A. Pre-Inicio -->
+        <fieldset>
+          <h3 class="title">A. Pre-Inicio</h3>
+          <p>Completar todos los ítems en el orden como se presentan.</p>
+
+          <!-- Preguntas de selección de "Sí/No" con opción predeterminada "Seleccionar" -->
+          <div class="form-group row">
+            <label for="item1" class="col-sm-4 col-form-label">1. Espacio Aéreo (Sin restricción o vuelo autorizado):</label>
+            <div class="col-sm-8">
+              <select id="item1" name="item1" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item2" class="col-sm-4 col-form-label">2. Espacio Aéreo (Identificar obstrucciones cerca del patrón de vuelo):</label>
+            <div class="col-sm-8">
+              <select id="item2" name="item2" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item3" class="col-sm-4 col-form-label">3. Meteorología (Visibilidad ≥ 3 millas, Viento ≤ 38km/h, Sin lluvia):</label>
+            <div class="col-sm-8">
+              <select id="item3" name="item3" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item4" class="col-sm-4 col-form-label">4. Estructura/Hélices UAS (Sin defectos estructurales visibles):</label>
+            <div class="col-sm-8">
+              <select id="item4" name="item4" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item5" class="col-sm-4 col-form-label">5. Batería/s UAS (Suficientes para el vuelo, ≥ 80%):</label>
+            <div class="col-sm-8">
+              <select id="item5" name="item5" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item6" class="col-sm-4 col-form-label">6. Batería del dispositivo de pantalla (≥ 80%):</label>
+            <div class="col-sm-8">
+              <select id="item6" name="item6" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item7" class="col-sm-4 col-form-label">7. Tarjetas de Memoria (Instaladas, suficiente espacio):</label>
+            <div class="col-sm-8">
+              <select id="item7" name="item7" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item8" class="col-sm-4 col-form-label">8. Observador (Presente, briefing completo):</label>
+            <div class="col-sm-8">
+              <select id="item8" name="item8" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+            <option value="no_aplica">No Aplica</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item9" class="col-sm-4 col-form-label">9. Bloqueo del Gimbal de la cámara (Removido):</label>
+            <div class="col-sm-8">
+              <select id="item9" name="item9" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item10" class="col-sm-4 col-form-label">10. Dispositivo de Pantalla (Encendido):</label>
+            <div class="col-sm-8">
+              <select id="item10" name="item10" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item11" class="col-sm-4 col-form-label">11. Control Remoto (Encendido):</label>
+            <div class="col-sm-8">
+              <select id="item11" name="item11" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item12" class="col-sm-4 col-form-label">12. UAS (Encendido):</label>
+            <div class="col-sm-8">
+              <select id="item12" name="item12" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item13" class="col-sm-4 col-form-label">13. Luces de estado del UAS  (Flashing VERDE):</label>
+            <div class="col-sm-8">
+              <select id="item13" name="item13" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item14" class="col-sm-4 col-form-label">14. Chequeo de Cámara (Vista normal de cámara FPV):</label>
+            <div class="col-sm-8">
+              <select id="item14" name="item14" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item15" class="col-sm-4 col-form-label">15. Calibración Rumbo/Compass (Compass calibrado para la ubicación actual):</label>
+            <div class="col-sm-8">
+              <select id="item15" name="item15" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item16" class="col-sm-4 col-form-label">16. Límites de vuelo programados (Altitud. <=120 metros, Distancia. <=500/750 metros):</label>
+            <div class="col-sm-8">
+              <select id="item16" name="item16" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item17" class="col-sm-4 col-form-label">17. Flight Mode Set to GPS  (Modo del control en “P”,estatus en pantalla VERDE- RTF):</label>
+            <div class="col-sm-8">
+              <select id="item17" name="item17" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item18" class="col-sm-4 col-form-label">18. Ubicación de despegue (Libre de obstáculos >=8 metros de radio):</label>
+            <div class="col-sm-8">
+              <select id="item18" name="item18" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <h3 class="title">B. Encendido del Motor</h3>
+
+          <div class="form-group row">
+            <label for="item19" class="col-sm-4 col-form-label">1. Inicio de motores de la UA  (Los motores deben iniciar en mínimas RPM’s sin sonidos  anormales):</label>
+            <div class="col-sm-8">
+              <select id="item19" name="item19" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item20" class="col-sm-4 col-form-label">2. Home Point (Establecer el Home Point):</label>
+            <div class="col-sm-8">
+              <select id="item20" name="item20" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item21" class="col-sm-4 col-form-label">3. Control de Desplazamiento (Controles de vuelo y del Gimbal con respuesta normal):</label>
+            <div class="col-sm-8">
+              <select id="item21" name="item21" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="item22" class="col-sm-4 col-form-label">4. Telemetría de vuelo  (Telemetría normal (Bat, Alt, Dist., etc.)):</label>
+            <div class="col-sm-8">
+              <select id="item22" name="item22" class="form-control">
+            <option value="">Seleccionar</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select>
+            </div>
+          </div>
+
+
+
+          <!-- Más ítems pueden agregarse aquí -->
+
+        </fieldset>
+
+        <div class="form-group row">
+          <label for="notas" class="col-sm-4 col-form-label">Notas:</label>
+          <div class="col-sm-8">
+            <textarea id="notas" name="notas" class="form-control" rows="4" placeholder="Escriba sus notas aquí..."></textarea>
+          </div>
+        </div>
+
+        <div style="height: 40px;"></div>
+        <button type="submit" class="btn btn-primary">Guardar Prevuelo</button>
+      </form>
     </div>
 
-    <h2 class="titulotabla">Registros</h2>
-    <table >
-      <thead>
-          <tr>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Correo</th>
-              <th>Género</th>
-              <th>Tipo Documento</th>
-              <th>N° Documento</th>
-              <th>Fecha de nacimiento</th>
-              <th>Numero de telefono</th>
-          </tr>
-      </thead>
-      <tbody id="tabla">
+    <!-------------------------------------------------------------------------------- Reporte ------------------------------------------------------>
 
-      </tbody>
-    </table>
-  
+    <div id="divreporte" style="display: none;">
+      <h3 class="title">Ingreso de Reportes</h3>
+      <form id="reportes" onsubmit="guardarreportes(event)">
+
+
+
+
+        <div style="height: 40px;"></div>
+        <button type="submit" class="btn btn-primary">Guardar Reporte</button>
+
+
+        
+
+      </form>
+
+
+
+    </div>
+
+    <div id="divpostvuelo" style="display: none;">
+      <!-- Contenido de Post Vuelo -->
+      <h3>Post Vuelo</h3>
+      <p>Contenido del post vuelo...</p>
+    </div>
+
+    <div id="divbitacoras" style="display: none;">
+      <!-- Contenido de Bitacoras -->
+      <h3>Bitacoras</h3>
+      <p>Contenido de las bitácoras...</p>
+    </div>
+  </div>
 </body>
+
+<?!= include('2.jspiloto') ?>
+
 </html>
