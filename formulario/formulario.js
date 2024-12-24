@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
   // Inicializa los tooltips de Bootstrap
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
@@ -6,31 +7,43 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+let tooltipAbierto = null; // Variable para rastrear el tooltip abierto
+
 function toggleTooltip(event) {
-  // Obtener el tooltip del div actual
   const tooltip = event.currentTarget.querySelector('.tooltip-custom');
 
-  // Cerrar todos los tooltips antes de abrir uno nuevo
-  const tooltips = document.querySelectorAll('.tooltip-custom');
-  tooltips.forEach(t => t.classList.remove('tooltip-visible'));
+  // Si el tooltip actual ya está visible, lo oculta
+  if (tooltip === tooltipAbierto) {
+    tooltip.classList.remove('tooltip-visible'); // Ocultar tooltip
+    tooltipAbierto = null; // Reiniciar variable
+    return; // Detener aquí
+  }
 
-  // Mostrar el tooltip seleccionado
+  // Cierra cualquier tooltip abierto antes de abrir uno nuevo
+  if (tooltipAbierto) {
+    tooltipAbierto.classList.remove('tooltip-visible');
+  }
+
+  // Muestra el nuevo tooltip
   tooltip.classList.add('tooltip-visible');
+  tooltipAbierto = tooltip;
 
-  // Detectar clic fuera del tooltip para cerrarlo
-  function cerrarTooltip(e) {
-    // Si se hace clic fuera del div, se oculta el tooltip
+  // Detectar clic fuera del tooltip o cualquier campo
+  function cerrarTooltipExterno(e) {
+    // Si el clic no es dentro del tooltip o campo actual
     if (!event.currentTarget.contains(e.target)) {
       tooltip.classList.remove('tooltip-visible'); // Oculta el tooltip
-      document.removeEventListener('click', cerrarTooltip); // Elimina el evento
+      tooltipAbierto = null; // Reinicia la variable
+      document.removeEventListener('click', cerrarTooltipExterno); // Quitar listener
     }
   }
 
-  // Agregar listener para detectar clic fuera (móviles)
+  // Agregar el listener para cerrar al hacer clic fuera
   setTimeout(() => {
-    document.addEventListener('click', cerrarTooltip);
+    document.addEventListener('click', cerrarTooltipExterno);
   });
 }
+
 
 
   function ocultarDivs() {
