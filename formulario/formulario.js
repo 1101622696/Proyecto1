@@ -7,20 +7,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function toggleTooltip(event) {
+  // Obtener el tooltip del div actual
   const tooltip = event.currentTarget.querySelector('.tooltip-custom');
 
-  // Alternar visibilidad del tooltip
-  tooltip.classList.toggle('tooltip-visible');
+  // Cerrar todos los tooltips antes de abrir uno nuevo
+  const tooltips = document.querySelectorAll('.tooltip-custom');
+  tooltips.forEach(t => t.classList.remove('tooltip-visible'));
 
-  // Cerrar tooltip si se toca fuera
-  document.addEventListener('click', function cerrarTooltip(e) {
+  // Mostrar el tooltip seleccionado
+  tooltip.classList.add('tooltip-visible');
+
+  // Detectar clic fuera del tooltip para cerrarlo
+  function cerrarTooltip(e) {
+    // Si se hace clic fuera del div, se oculta el tooltip
     if (!event.currentTarget.contains(e.target)) {
-      tooltip.classList.remove('tooltip-visible');
-      document.removeEventListener('click', cerrarTooltip);
+      tooltip.classList.remove('tooltip-visible'); // Oculta el tooltip
+      document.removeEventListener('click', cerrarTooltip); // Elimina el evento
     }
+  }
+
+  // Agregar listener para detectar clic fuera (móviles)
+  setTimeout(() => {
+    document.addEventListener('click', cerrarTooltip);
   });
 }
-
 
 
   function ocultarDivs() {
