@@ -3,8 +3,9 @@
 <head>
   <base target="_top">
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="formulario.js"></script>
+  <link rel="stylesheet" href="/css/comun.css">
+  <script src="/js/departamentos.js"></script>
+  <script src="/js/piloto.js"></script>
 
   <!-- <link rel="stylesheet" href="/css/piloto.css"> -->
   <!-- Bootstrap CSS -->
@@ -295,6 +296,7 @@
         <div class="datosolicitante">
           <h3 class="titulo-centrado">4. TIPO DE CONTACTO VISUAL CON LA UA</h3>
 
+          <div class="agrupacion">
           <div class="inputformulario">
               <div class="form-floating">
                 <select id="tipodecontactovisualconlaua" name="tipodecontactovisualconlaua" class="form-select" >
@@ -306,6 +308,8 @@
                 <label for="tipodecontactovisualconlaua">Seleccione el tipo de contacto visual con la UA:</label>
               </div>
           </div>
+        </div>
+
         </div>
 
         <div class="datosolicitante">
@@ -1519,21 +1523,21 @@
 <div class="inputformulario">
 <div class="form-floating">
   <input type="text" class="form-control" id="latitudInicio" placeholder="latitudInicio">
-  <label id="latitudInicio" for="latitudInicio">Digite la latitud de Inicio</label>
+  <label id="latitudInicio" for="latitudInicio">latitud de Inicio</label>
 </div>
 </div>
 
 <div class="inputformulario">
 <div class="form-floating">
   <input type="text" class="form-control" id="longitudInicio" placeholder="longitudInicio">
-  <label id="longitudInicio" for="longitudInicio">Digite la longitud de Inicio</label>
+  <label id="longitudInicio" for="longitudInicio">longitud de Inicio</label>
 </div>
 </div>
 
 <div class="inputformulario">
 <div class="form-floating">
   <input type="text" class="form-control" id="altitudInicio" placeholder="altitudInicio">
-  <label id="altitudInicio" for="altitudInicio">Digite la altitud de Inicio</label>
+  <label id="altitudInicio" for="altitudInicio">altitud de Inicio</label>
 </div>
 </div>
 </div>
@@ -1543,21 +1547,21 @@
 <div class="inputformulario">
 <div class="form-floating">
 <input type="text" class="form-control" id="latitudFin" placeholder="latitudFin">
-<label id="latitudFin" for="latitudFin">Digite la latitud de Final</label>
+<label id="latitudFin" for="latitudFin">latitud de Final</label>
 </div>
 </div>
 
 <div class="inputformulario">
 <div class="form-floating">
 <input type="text" class="form-control" id="longitudFin" placeholder="longitudFin">
-<label id="longitudFin" for="longitudFin">Digite la longitud de Final</label>
+<label id="longitudFin" for="longitudFin">longitud de Final</label>
 </div>
 </div>
 
 <div class="inputformulario">
 <div class="form-floating">
 <input type="text" class="form-control" id="altitudFin" placeholder="altitudFin">
-<label id="altitudFin" for="altitudFin">Digite la altitud de Final</label>
+<label id="altitudFin" for="altitudFin">altitud de Final</label>
 </div>
 </div>
 </div>
@@ -1578,7 +1582,7 @@
 </div>
 </div>
 
-<!-- <div class="agrupacion">
+<!--<div class="agrupacion">
 <div class="inputformulario">
 <div class="form-floating">
   <select id="incidentes" name="incidentes" class="form-select" >
@@ -1588,9 +1592,9 @@
   </select>
   <label for="incidentes">Presentó Incidentes en el vuelo?</label>
 </div>
-</div> -->
+</div>-->
 
-  <div class="agrupacion">
+  <!-- <div class="agrupacion">
     <div class="inputformulario">
       <div class="form-floating tooltip-container">
         <select id="incidentes" name="incidentes" class="form-select">
@@ -1602,12 +1606,34 @@
         <div class="tooltip-custom">Presentó Incidentes en el vuelo?</div>
       </div>
     </div>
-  </div>
+  </div> -->
   
+  <div class="agrupacion">
+    <div class="inputformulario">
+      <div class="form-floating tooltip-container" onclick="toggleTooltip(event)">
+        <select id="incidentes" name="incidentes" class="form-select">
+          <option value="" hidden></option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+        <label for="incidentes">Presentó Incidentes en el vuelo?</label>
+        <div class="tooltip-custom">Presentó Incidentes en el vuelo?</div>
+      </div>
+    </div>
+ 
   
-
-
-<div class="inputformulario">
+    <div class="inputformulario">
+      <div class="form-floating tooltip-container" onclick="toggleTooltip(event)">
+        <select id="propositoAlcanzado" name="propositoAlcanzado" class="form-select" >
+          <option value="" hidden></option>
+          <option value="si">Sí</option>
+          <option value="no">No</option>
+        </select>
+        <label for="propositoAlcanzado">El propósito fue alcanzado</label>
+        <div class="tooltip-custom">El propósito fue alcanzado</div>
+      </div>
+    </div>
+<!-- <div class="inputformulario">
   <div class="form-floating">
     <select id="propositoAlcanzado" name="propositoAlcanzado" class="form-select" >
       <option value="" hidden></option>
@@ -1615,8 +1641,9 @@
       <option value="no">No</option>
     </select>
     <label for="propositoAlcanzado">El propósito fue alcanzado</label>
-</div>
-</div>
+    <div class="tooltip-custom">El propósito fue alcanzado</div>
+  </div>
+</div> -->
 
 
 
