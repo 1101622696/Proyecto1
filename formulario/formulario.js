@@ -6,6 +6,20 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+function toggleTooltip(event) {
+  const tooltip = event.currentTarget.querySelector('.tooltip-custom');
+
+  // Alternar visibilidad del tooltip
+  tooltip.classList.toggle('tooltip-visible');
+
+  // Cerrar tooltip si se toca fuera
+  document.addEventListener('click', function cerrarTooltip(e) {
+    if (!event.currentTarget.contains(e.target)) {
+      tooltip.classList.remove('tooltip-visible');
+      document.removeEventListener('click', cerrarTooltip);
+    }
+  });
+}
 
 
 
